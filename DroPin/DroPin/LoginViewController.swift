@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         submitButton = UIButton(frame: CGRect(x: 100, y: 100, width: 200, height: 100))
         submitButton.setTitle("login", for: .normal)
         submitButton.setTitleColor(.black, for: .normal)
-        submitButton.addTarget(self, action: #selector(loginAction), for: .touchUpInside)
+        //submitButton.addTarget(self, action: #selector(loginAction), for: .touchUpInside)
         self.view.addSubview(submitButton)
         
         self.view.backgroundColor = .white
