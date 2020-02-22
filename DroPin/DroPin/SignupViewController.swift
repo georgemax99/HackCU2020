@@ -54,7 +54,8 @@ class SignupViewController: UIViewController {
             
             if name != "" && phoneNumber != "" {
                 let parameters : [String : Any] = [
-                    "phoneNumber" : phoneNumber
+                    "phoneNumber" : phoneNumber,
+                    "name" : name
                 ]
                 
                 sendSignupPost(url: "http://Partyfavorserver-env.zjesqhwmja.us-east-1.elasticbeanstalk.com/login", parameters: parameters)
@@ -97,12 +98,10 @@ class SignupViewController: UIViewController {
                                 
                 if responseString == "0" {
                     DispatchQueue.main.async {
-                        //self.segueToVerifyVC()
+                        self.segueToVerify()
                     }
                 } else if responseString == "1" {
-                    //Email already in use
-                } else if responseString == "2" {
-                    //Phone number already in use
+                    //phone number already in use
                 }
                 
                 print("responseString = \(responseString)")
@@ -113,5 +112,30 @@ class SignupViewController: UIViewController {
         task.resume()
     }
     
+    func segueToVerify() {
+        
+    }
     
+}
+
+extension Dictionary {
+    func percentEscaped() -> String {
+        return map { (key, value) in
+            let escapedKey = "\(key)".addingPercentEncoding(withAllowedCharacters: .urlQueryValueAllowed) ?? ""
+            let escapedValue = "\(value)".addingPercentEncoding(withAllowedCharacters: .urlQueryValueAllowed) ?? ""
+            return escapedKey + "=" + escapedValue
+            }
+            .joined(separator: "&")
+    }
+}
+
+extension CharacterSet {
+    static let urlQueryValueAllowed: CharacterSet = {
+        let generalDelimitersToEncode = ":#[]@" // does not include "?" or "/" due to RFC 3986 - Section 3.4
+        let subDelimitersToEncode = "!$&'()*+,;="
+        
+        var allowed = CharacterSet.urlQueryAllowed
+        allowed.remove(charactersIn: "\(generalDelimitersToEncode)\(subDelimitersToEncode)")
+        return allowed
+    }()
 }
