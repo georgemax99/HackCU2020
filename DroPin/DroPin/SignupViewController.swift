@@ -63,10 +63,14 @@ class SignupViewController: UIViewController {
             } else if name == "" && phoneNumber == "" {
                 //name is empty
                 //show error
+                errorLabel.text = "Name and Phone # Fields are Empty"
+                errorLabel.isHidden = false
             } else if name == "" {
-                
+                errorLabel.text = "Name Field is Empty"
+                errorLabel.isHidden = false
             } else if phoneNumber == "" {
-                
+                errorLabel.text = "Phone # Field is Empty"
+                errorLabel.isHidden = false
             }
             
             
@@ -102,8 +106,9 @@ class SignupViewController: UIViewController {
                     }
                 } else if responseString == "1" {
                     //phone number already in use
+                    self.errorLabel.text = "Phone # already in use"
+                    self.errorLabel.isHidden = false
                 }
-                
                 print("responseString = \(responseString)")
             }
             
