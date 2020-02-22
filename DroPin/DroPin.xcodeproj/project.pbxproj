@@ -17,6 +17,7 @@
 		52EC23DC2401B97C001D861C /* DroPinUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC23DB2401B97C001D861C /* DroPinUITests.swift */; };
 		52EC23EB2401DD1A001D861C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC23EA2401DD1A001D861C /* LoginViewController.swift */; };
 		52EC23ED2401E098001D861C /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC23EC2401E098001D861C /* SignupViewController.swift */; };
+		52EC23EF2401E8CF001D861C /* VerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC23EE2401E8CF001D861C /* VerifyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		52EC23DD2401B97C001D861C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52EC23EA2401DD1A001D861C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		52EC23EC2401E098001D861C /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		52EC23EE2401E8CF001D861C /* VerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				52EC23C72401B97B001D861C /* Info.plist */,
 				52EC23EA2401DD1A001D861C /* LoginViewController.swift */,
 				52EC23EC2401E098001D861C /* SignupViewController.swift */,
+				52EC23EE2401E8CF001D861C /* VerifyViewController.swift */,
 			);
 			path = DroPin;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				52EC23EB2401DD1A001D861C /* LoginViewController.swift in Sources */,
 				52EC23BE2401B97B001D861C /* ViewController.swift in Sources */,
 				52EC23ED2401E098001D861C /* SignupViewController.swift in Sources */,
+				52EC23EF2401E8CF001D861C /* VerifyViewController.swift in Sources */,
 				52EC23BA2401B97B001D861C /* AppDelegate.swift in Sources */,
 				52EC23BC2401B97B001D861C /* SceneDelegate.swift in Sources */,
 			);

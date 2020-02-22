@@ -113,7 +113,9 @@ class SignupViewController: UIViewController {
     }
     
     func segueToVerify() {
-        
+        let vc = VerifyViewController()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: false, completion: nil)
     }
     
 }
