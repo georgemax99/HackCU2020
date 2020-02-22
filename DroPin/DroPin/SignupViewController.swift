@@ -58,7 +58,7 @@ class SignupViewController: UIViewController {
                     "name" : name
                 ]
                 
-                sendSignupPost(url: "http://Partyfavorserver-env.zjesqhwmja.us-east-1.elasticbeanstalk.com/login", parameters: parameters)
+                sendSignupPost(url: "http://Dropin-env.b7vjewtmgu.us-east-1.elasticbeanstalk.com/signup", parameters: parameters)
                 
             } else if name == "" && phoneNumber == "" {
                 //name is empty

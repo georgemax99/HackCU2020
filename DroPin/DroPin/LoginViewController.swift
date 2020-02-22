@@ -45,6 +45,66 @@ class LoginViewController: UIViewController {
     }
     
     @objc func submitAction() {
+        if let phoneNumber = phoneNumberField.text {
+                    
+                    
+            if phoneNumber != "" {
+                let parameters : [String : Any] = [
+                    "phoneNumber" : phoneNumber
+                ]
+                
+                sendLoginPost(url: "http://Dropin-env.b7vjewtmgu.us-east-1.elasticbeanstalk.com/login", parameters: parameters)
+                
+            } else {
+                //Phone number is empty
+            }
+            
+            
+        }
+    }
+            
+    func sendLoginPost(url : String, parameters : [String : Any]) {
+        let url = URL(string: url)!
+        var request = URLRequest(url: url)
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        request.httpBody = parameters.percentEscaped().data(using: .utf8)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data,
+                let response = response as? HTTPURLResponse,
+                error == nil else {                                              // check for fundamental networking error
+                    print("error", error ?? "Unknown error")
+                    return
+            }
+            
+            guard (200 ... 299) ~= response.statusCode else {                    // check for http errors
+                print("statusCode should be 2xx, but is \(response.statusCode)")
+                print("response = \(response)")
+                return
+            }
+            
+            if let responseString = String(data: data, encoding: .utf8) {
+                                
+                if responseString == "0" {
+                    DispatchQueue.main.async {
+                        self.segueToVerify()
+                    }
+                } else if responseString == "1" {
+                    //no account found for that phone number
+                }
+                
+                print("responseString = \(responseString)")
+            }
+            
+        }
+        
+        task.resume()
+    }
+    
+    func segueToVerify() {
         
     }
+    
 }
+
