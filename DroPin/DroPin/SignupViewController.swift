@@ -57,7 +57,7 @@ class SignupViewController: UIViewController {
                     "phoneNumber" : phoneNumber,
                     "name" : name
                 ]
-                
+                UserDefaults.standard.set(phoneNumber, forKey: "phoneNumber")
                 sendSignupPost(url: "http://Dropin-env.b7vjewtmgu.us-east-1.elasticbeanstalk.com/signup", parameters: parameters)
                 
             } else if name == "" && phoneNumber == "" {

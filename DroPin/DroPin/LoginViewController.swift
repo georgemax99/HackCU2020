@@ -52,7 +52,7 @@ class LoginViewController: UIViewController {
                 let parameters : [String : Any] = [
                     "phoneNumber" : phoneNumber
                 ]
-                
+                UserDefaults.standard.set(phoneNumber, forKey: "phoneNumber")
                 sendLoginPost(url: "http://Dropin-env.b7vjewtmgu.us-east-1.elasticbeanstalk.com/login", parameters: parameters)
                 
             } else {
