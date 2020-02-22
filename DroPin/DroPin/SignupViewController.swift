@@ -39,8 +39,8 @@ class SignupViewController: UIViewController {
         phoneNumberField.textColor = .black
         self.view.addSubview(phoneNumberField)
         
-        submitButton = UIButton(frame: CGRect(x: 100, y: 100, width: 500, height: 100))
-        submitButton.setTitle("login", for: .normal)
+        submitButton = UIButton(frame: CGRect(x: 100, y: 500, width: 200, height: 100))
+        submitButton.setTitle("submit", for: .normal)
         submitButton.setTitleColor(.black, for: .normal)
         submitButton.addTarget(self, action: #selector(submitAction), for: .touchUpInside)
         self.view.addSubview(submitButton)
