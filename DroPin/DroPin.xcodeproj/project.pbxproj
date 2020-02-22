@@ -15,6 +15,7 @@
 		52EC23C62401B97B001D861C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52EC23C42401B97B001D861C /* LaunchScreen.storyboard */; };
 		52EC23D12401B97B001D861C /* DroPinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC23D02401B97B001D861C /* DroPinTests.swift */; };
 		52EC23DC2401B97C001D861C /* DroPinUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC23DB2401B97C001D861C /* DroPinUITests.swift */; };
+		52EC23EB2401DD1A001D861C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC23EA2401DD1A001D861C /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		52EC23D72401B97C001D861C /* DroPinUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DroPinUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52EC23DB2401B97C001D861C /* DroPinUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroPinUITests.swift; sourceTree = "<group>"; };
 		52EC23DD2401B97C001D861C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52EC23EA2401DD1A001D861C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,12 +102,13 @@
 			isa = PBXGroup;
 			children = (
 				52EC23B92401B97B001D861C /* AppDelegate.swift */,
-				52EC23BB2401B97B001D861C /* SceneDelegate.swift */,
 				52EC23BD2401B97B001D861C /* ViewController.swift */,
+				52EC23BB2401B97B001D861C /* SceneDelegate.swift */,
 				52EC23BF2401B97B001D861C /* Main.storyboard */,
 				52EC23C22401B97B001D861C /* Assets.xcassets */,
 				52EC23C42401B97B001D861C /* LaunchScreen.storyboard */,
 				52EC23C72401B97B001D861C /* Info.plist */,
+				52EC23EA2401DD1A001D861C /* LoginViewController.swift */,
 			);
 			path = DroPin;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52EC23EB2401DD1A001D861C /* LoginViewController.swift in Sources */,
 				52EC23BE2401B97B001D861C /* ViewController.swift in Sources */,
 				52EC23BA2401B97B001D861C /* AppDelegate.swift in Sources */,
 				52EC23BC2401B97B001D861C /* SceneDelegate.swift in Sources */,
