@@ -43,7 +43,9 @@ class ViewController: UIViewController {
     }
     
     @objc func signupAction() {
-        
+        let vc = SignupViewController()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: false, completion: nil)
     }
 }
 
