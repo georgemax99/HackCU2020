@@ -36,6 +36,9 @@ class ViewController: UIViewController {
     }
     
     @objc func loginAction() {
+        let vc = LoginViewController()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: false, completion: nil)
         
     }
     
