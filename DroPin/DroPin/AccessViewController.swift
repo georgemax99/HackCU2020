@@ -19,6 +19,7 @@ class AccessViewController: UIViewController {
     var submitButton : UIButton!
     var count = 1
     var locationInit = false
+    var backButton : UIButton!
     
     let locationManager = CLLocationManager()
     
@@ -52,6 +53,13 @@ class AccessViewController: UIViewController {
         submitButton.addTarget(self, action: #selector(submitAction), for: .touchUpInside)
         self.view.addSubview(submitButton)
         
+        backButton = UIButton(frame: CGRect(x: -50, y: UIScreen.main.bounds.height * 0.08, width: 50, height: 50))
+        backButton.setTitle("backarrow", for: .normal)
+        backButton.setImage(UIImage(named: "arrow"), for: .normal)
+        backButton.center.x = self.view.center.x - 140
+        backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+        self.view.addSubview(backButton)
+        
         self.view.backgroundColor = .white
     }
     
@@ -59,6 +67,12 @@ class AccessViewController: UIViewController {
         showAccess()
         count += 1
         
+    }
+    
+    @objc func backAction(){
+           let vc = LoginViewController()
+           vc.modalPresentationStyle = .fullScreen
+           present(vc, animated: false, completion: nil)
     }
     
     func segueToMapVC() {

@@ -273,28 +273,25 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, MKMapView
             
             switch annotation.type { // Here is the order of the types ["Misc", "Basketball", "Soccer", "Frisbee", "Studying", "Gym", "Party", "Skating", "Snowboarding / Skiing", "Video Games"]
             case 0:
-                annotationView.image = UIImage(named: "29")
+                annotationView.image = UIImage(named: "Basketball pin icon")
             case 1:
-                annotationView.image = UIImage(named: "29")
+                annotationView.image = UIImage(named: "Soccer Pin icon")
             case 2:
-                annotationView.image = UIImage(named: "29")
+                annotationView.image = UIImage(named: "Frisbee pin icon")
             case 3:
-                annotationView.image = UIImage(named: "29")
+                annotationView.image = UIImage(named: "Studying pin icon")
             case 4:
-                annotationView.image = UIImage(named: "29")
+                annotationView.image = UIImage(named: "Gym Pin icon")
             case 5:
-                annotationView.image = UIImage(named: "29")
+                annotationView.image = UIImage(named: "Party pin icon")
             case 6:
-                annotationView.image = UIImage(named: "29")
+                annotationView.image = UIImage(named: "Skating pin icon")
             case 7:
-                annotationView.image = UIImage(named: "29")
+                annotationView.image = UIImage(named: "Skiing Pin icon")
             case 8:
-                annotationView.image = UIImage(named: "29")
-            case 9:
-                annotationView.image = UIImage(named: "29")
-                
+                annotationView.image = UIImage(named: "Video Gaming pin icon")
             default: //Use misc here
-                annotationView.image = UIImage(named: "29")
+                annotationView.image = UIImage(named: "Misc pin icon")
             }
             
             var descHeight = 0

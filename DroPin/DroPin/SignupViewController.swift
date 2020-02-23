@@ -31,7 +31,7 @@ class SignupViewController: UIViewController {
         bgColor.center.x = self.view.center.x
         self.view.addSubview(bgColor)
         
-        errorLabel = UILabel(frame: CGRect(x: 100, y: 50, width: 200, height: 50))
+        errorLabel = UILabel(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.8, width: 200, height: 50))
         errorLabel.text = "put error here"
         errorLabel.isHidden = true
         errorLabel.textColor = .red

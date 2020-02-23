@@ -20,6 +20,11 @@ class AddEventViewController : UIViewController, CLLocationManagerDelegate, UITe
     var typePicker : UIPickerView!
     var typeField : UITextField!
     var locationManager = CLLocationManager()
+    var addLocationButton : UIButton!
+    var ProfButton : UIButton!
+    var PindButton : UIButton!
+    var HomeButton : UIButton!
+    var backButton : UIButton!
     var type = 0
     let types = ["Misc", "Basketball", "Soccer", "Frisbee", "Studying", "Gym", "Party", "Skating", "Snowboarding / Skiing", "Video Games"]
     
@@ -35,40 +40,163 @@ class AddEventViewController : UIViewController, CLLocationManagerDelegate, UITe
     }
     
     func initUI() {
-        eventNameField = UITextField(frame: CGRect(x: 100, y: 100, width: 200, height: 100))
+        
+        var bgColor : UIImageView
+        bgColor = UIImageView(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height));
+        bgColor.image = UIImage(named:"bgcolor")
+        bgColor.center.x = self.view.center.x
+        self.view.addSubview(bgColor)
+        
+        var textfieldn : UIImageView
+        textfieldn = UIImageView(frame:CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.675, width: 170, height: 55));
+        textfieldn.image = UIImage(named:"Title box (top left)-1")
+        textfieldn.center.x = self.view.center.x - UIScreen.main.bounds.width * 0.18
+        self.view.addSubview(textfieldn)
+        eventNameField = UITextField(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.675, width: 150, height: 55))
         eventNameField.placeholder = "Event name"
         eventNameField.textColor = .black
+        eventNameField.center.x = self.view.center.x - UIScreen.main.bounds.width * 0.18
         self.view.addSubview(eventNameField)
         
-        numNeededField = UITextField(frame: CGRect(x: 100, y: 300, width: 200, height: 100))
-        numNeededField.placeholder = "Number needed"
-        numNeededField.textColor = .black
-        self.view.addSubview(numNeededField)
         
-        descriptionField = UITextView(frame: CGRect(x: 100, y: 400, width: 200, height: 200))
+        var textfieldnum : UIImageView
+               textfieldnum = UIImageView(frame:CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.675, width: 100, height: 55));
+               textfieldnum.image = UIImage(named:"PPl needed box (top right)-1")
+               textfieldnum.center.x = self.view.center.x + UIScreen.main.bounds.width * 0.24
+               self.view.addSubview(textfieldnum)
+        numNeededField = UITextField(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.675, width: 90, height: 55))
+        numNeededField.placeholder = "# needed"
+        numNeededField.textColor = .black
+        numNeededField.center.x = self.view.center.x + UIScreen.main.bounds.width * 0.246
+        self.view.addSubview(numNeededField)
+       
+        
+        var textfielddesc : UIImageView
+        textfielddesc = UIImageView(frame:CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.5, width: 300, height: 150));
+        textfielddesc.image = UIImage(named:"Description box (bottom)-1")
+        textfielddesc.center.x = self.view.center.x
+        self.view.addSubview(textfielddesc)
+        descriptionField = UITextView(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.5, width: 300, height: 150))
         descriptionField.textColor = .black
         descriptionField.delegate = self
+        descriptionField.center.x = self.view.center.x
         self.view.addSubview(descriptionField)
         
-        timePicker = UIDatePicker(frame: CGRect(x: 100, y: 600, width: 200, height: 100))
+        
+        var timefield : UIImageView
+        timefield = UIImageView(frame:CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.5875, width: 150, height: 50));
+        timefield.image = UIImage(named:"Time box (mid left)-1")
+        timefield.center.x = self.view.center.x - UIScreen.main.bounds.width * 0.2
+        self.view.addSubview(timefield)
+        timePicker = UIDatePicker(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.6, width: 150, height: 75))
         timePicker.datePickerMode = .time
+        timePicker.center.x = self.view.center.x - UIScreen.main.bounds.width * 0.2
         self.view.addSubview(timePicker)
         
+        
+        var typefield : UIImageView
+        typefield = UIImageView(frame:CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.5875, width: 150, height: 50));
+        typefield.image = UIImage(named:"Location box (mid right)-1")
+        typefield.center.x = self.view.center.x + UIScreen.main.bounds.width * 0.2
+        self.view.addSubview(typefield)
         typePicker = UIPickerView()
         typePicker.delegate = self
-        typeField = UITextField(frame: CGRect(x: 100, y: 700, width: 200, height: 100))
+        typeField = UITextField(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.6, width: 150, height: 75))
         typeField.inputView = typePicker
+        typeField.center.x = self.view.center.x + UIScreen.main.bounds.width * 0.24
         self.view.addSubview(typeField)
         
-        submitButton = UIButton(frame: CGRect(x: 100, y: 200, width: 200, height: 100))
+        
+        submitButton = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.3, width: 200, height: 100))
         submitButton.setTitle("login", for: .normal)
         submitButton.setTitleColor(.black, for: .normal)
+        submitButton.setImage(UIImage(named: "submitbutton"), for: .normal)
+        submitButton.center.x = self.view.center.x
         submitButton.addTarget(self, action: #selector(submitAction), for: .touchUpInside)
         self.view.addSubview(submitButton)
         
+        
         dismissPickerView()
         
+        var icon : UIImageView
+        icon = UIImageView(frame:CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.95, width: 175, height: 180));
+        icon.image = UIImage(named:"plogo")
+        icon.center.x = self.view.center.x
+        self.view.addSubview(icon)
+        
+        var amazing : UIImageView
+        amazing = UIImageView(frame:CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.8, width: 240, height: 20));
+        amazing.image = UIImage(named:"Have something amazing in mind")
+        amazing.center.x = self.view.center.x
+        self.view.addSubview(amazing)
+        
+        var pin : UIImageView
+        pin = UIImageView(frame:CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.75, width: 175, height: 50));
+        pin.image = UIImage(named:"Add a Pin now")
+        pin.center.x = self.view.center.x
+        self.view.addSubview(pin)
+        
+        var navb : UIImageView
+        navb = UIImageView(frame:CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.185, width: UIScreen.main.bounds.height * 0.13, height: UIScreen.main.bounds.height * 0.13));
+        navb.image = UIImage(named:"Bar logo base")
+        navb.center.x = self.view.center.x
+        self.view.addSubview(navb)
+        
+        var navbtop : UIImageView
+        navbtop = UIImageView(frame:CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.125, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.125));
+        navbtop.image = UIImage(named:"Bar Base")
+        navbtop.center.x = self.view.center.x
+        self.view.addSubview(navbtop)
+               
+        
+        var smlogo : UIImageView
+        smlogo = UIImageView(frame:CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.185, width: UIScreen.main.bounds.height * 0.1, height: UIScreen.main.bounds.height * 0.12));
+        smlogo.image = UIImage(named:"Bar Logo")
+        smlogo.center.x = self.view.center.x
+        self.view.addSubview(smlogo)
+        
+        addLocationButton = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.09, width: UIScreen.main.bounds.height * 0.05, height: UIScreen.main.bounds.height * 0.05))
+        addLocationButton.setTitle("add location", for: .normal)
+        addLocationButton.setTitleColor(.black, for: .normal)
+        addLocationButton.setImage(UIImage(named: "Add_Pins"), for: .normal)
+        addLocationButton.center.x = self.view.center.x - UIScreen.main.bounds.width * 0.19
+        addLocationButton.addTarget(self, action: #selector(addLocationAction), for: .touchUpInside)
+        self.view.addSubview(addLocationButton)
+        
+        ProfButton = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.09, width: UIScreen.main.bounds.height * 0.035, height: UIScreen.main.bounds.height * 0.05))
+        ProfButton.setTitle("Profile", for: .normal)
+        ProfButton.setTitleColor(.black, for: .normal)
+        ProfButton.setImage(UIImage(named: "Me"), for: .normal)
+        ProfButton.center.x = self.view.center.x + UIScreen.main.bounds.width * 0.38
+        ProfButton.addTarget(self, action: #selector(segueToProfileVC), for: .touchUpInside)
+        self.view.addSubview(ProfButton)
+        
+        PindButton = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.09, width: UIScreen.main.bounds.height * 0.05, height: UIScreen.main.bounds.height * 0.05))
+        PindButton.setTitle("MyPind", for: .normal)
+        PindButton.setTitleColor(.black, for: .normal)
+        PindButton.setImage(UIImage(named: "My Pin'd"), for: .normal)
+        PindButton.center.x = self.view.center.x + UIScreen.main.bounds.width * 0.19
+        PindButton.addTarget(self, action: #selector(HomeAction), for: .touchUpInside)
+        self.view.addSubview(PindButton)
+        
+        HomeButton = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.1, width: UIScreen.main.bounds.height * 0.1, height: UIScreen.main.bounds.height * 0.06))
+        HomeButton.setTitle("Home", for: .normal)
+        HomeButton.setTitleColor(.black, for: .normal)
+        HomeButton.setImage(UIImage(named: "Home"), for: .normal)
+        HomeButton.center.x = self.view.center.x - UIScreen.main.bounds.width * 0.38
+        HomeButton.addTarget(self, action: #selector(HomeAction), for: .touchUpInside)
+        self.view.addSubview(HomeButton)
+        
         self.view.backgroundColor = .white
+        
+        backButton = UIButton(frame: CGRect(x: -50, y: UIScreen.main.bounds.height * 0.08, width: 50, height: 50))
+        backButton.setTitle("backarrow", for: .normal)
+        backButton.setImage(UIImage(named: "arrow"), for: .normal)
+        backButton.center.x = self.view.center.x - 140
+        backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+        self.view.addSubview(backButton)
+        
+        
     }
     
     @objc func submitAction() {
@@ -85,6 +213,30 @@ class AddEventViewController : UIViewController, CLLocationManagerDelegate, UITe
             }
         }
         
+    }
+    
+    @objc func addLocationAction() {
+           let vc = AddEventViewController()
+           vc.modalPresentationStyle = .fullScreen
+           present(vc, animated: false, completion: nil)
+    }
+    
+    @objc func HomeAction() {
+        let vc = MapViewController()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: false, completion: nil)
+    }
+    
+    @objc func segueToProfileVC() {
+        let vc = ProfileViewController()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: false, completion: nil)
+    }
+    
+    @objc func backAction(){
+        let vc = MapViewController()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: false, completion: nil)
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
