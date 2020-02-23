@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         loginButton.setTitle("Sign In", for: .normal)
         loginButton.setTitleColor(.black, for: .normal)
         loginButton.center.x = self.view.center.x
-        loginButton.setImage(UIImage(named: "Sign_inButton"), for: .normal)
+        loginButton.setImage(UIImage(named: "Signin"), for: .normal)
         loginButton.addTarget(self, action: #selector(loginAction), for: .touchUpInside)
         self.view.addSubview(loginButton)
         
@@ -62,11 +62,11 @@ class ViewController: UIViewController {
         var orView : UIImageView
         orView = UIImageView(frame:CGRect(x: 100, y: UIScreen.main.bounds.height * 0.35 + 110, width: 25, height: 25));
         orView.image = UIImage(named:"or")
-        orView.center.x = self.view.center.x
+        orView.center.x = self.view.center.x - 5
         self.view.addSubview(orView)
         
         var mapimg : UIImageView
-        mapimg  = UIImageView(frame:CGRect(x: 100, y: UIScreen.main.bounds.height * 0.35 + 150, width: 600, height: 400));
+        mapimg  = UIImageView(frame:CGRect(x: 100, y: UIScreen.main.bounds.height * 0.35 + 180, width: 600, height: 400));
         mapimg.image = UIImage(named:"mapimg")
         mapimg.center.x = self.view.center.x * 1.15
         self.view.addSubview(mapimg)

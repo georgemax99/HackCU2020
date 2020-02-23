@@ -15,6 +15,7 @@ class LoginViewController: UIViewController {
     var confirmButton : UIButton!
     var errorLabel : UILabel!
     var backButton : UIButton!
+    var regButton : UIButton!
 
 
     override func viewDidLoad() {
@@ -38,30 +39,30 @@ class LoginViewController: UIViewController {
         self.view.addSubview(errorLabel)
         
         var textfield : UIImageView
-        textfield = UIImageView(frame:CGRect(x: 100, y: UIScreen.main.bounds.height * 0.65 - 100, width: 280, height: 50));
+        textfield = UIImageView(frame:CGRect(x: 100, y: UIScreen.main.bounds.height * 0.65 - 120, width: 220, height: 50));
         textfield.image = UIImage(named:"Text box")
         textfield.center.x = self.view.center.x
         self.view.addSubview(textfield)
         
-        phoneNumberField = UITextField(frame: CGRect(x: 100, y: UIScreen.main.bounds.height * 0.65 - 100, width: 240, height: 50))
+        phoneNumberField = UITextField(frame: CGRect(x: 100, y: UIScreen.main.bounds.height * 0.65 - 120, width: 190, height: 50))
         phoneNumberField.attributedPlaceholder = NSAttributedString(string: "Enter Phone #", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         phoneNumberField.textColor = .white
-        phoneNumberField.center.x = self.view.center.x + 60
+        phoneNumberField.center.x = self.view.center.x + 40
         self.view.addSubview(phoneNumberField)
         
         var icon : UIImageView
-        icon = UIImageView(frame:CGRect(x: 0, y: UIScreen.main.bounds.height * 0.65 - 450, width: 200, height: 200));
+        icon = UIImageView(frame:CGRect(x: 0, y: UIScreen.main.bounds.height * 0.65 - 425, width: 175, height: 175));
         icon.image = UIImage(named:"plogo")
         icon.center.x = self.view.center.x
         self.view.addSubview(icon)
         
         var sin : UIImageView
-        sin = UIImageView(frame:CGRect(x: 0, y: UIScreen.main.bounds.height * 0.65 - 270, width: 200, height: 100));
-        sin.image = UIImage(named:"Sign in (White)")
+        sin = UIImageView(frame:CGRect(x: 0, y: UIScreen.main.bounds.height * 0.65 - 240, width: 150, height: 60));
+        sin.image = UIImage(named:"Sign In")
         sin.center.x = self.view.center.x
         self.view.addSubview(sin)
         
-        confirmButton = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height * 0.65, width: 200, height: 100))
+        confirmButton = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height * 0.65 - 20, width: 200, height: 90))
         confirmButton.setTitle("login", for: .normal)
         confirmButton.setTitleColor(.black, for: .normal)
         confirmButton.setImage(UIImage(named: "submitbutton"), for: .normal)
@@ -69,12 +70,25 @@ class LoginViewController: UIViewController {
         confirmButton.addTarget(self, action: #selector(submitAction), for: .touchUpInside)
         self.view.addSubview(confirmButton)
         
-        backButton = UIButton(frame: CGRect(x: -50, y: UIScreen.main.bounds.height * 0.65 - 560, width: 100, height: 100))
+        backButton = UIButton(frame: CGRect(x: -50, y: UIScreen.main.bounds.height * 0.08, width: 50, height: 50))
         backButton.setTitle("backarrow", for: .normal)
         backButton.setImage(UIImage(named: "arrow"), for: .normal)
-        backButton.center.x = self.view.center.x - 160
+        backButton.center.x = self.view.center.x - 140
         backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
         self.view.addSubview(backButton)
+        
+        var dont : UIImageView
+        dont = UIImageView(frame:CGRect(x: 0, y: UIScreen.main.bounds.height * 0.65 + 140, width: 200, height: 25));
+        dont.image = UIImage(named:"Don't have an account yet")
+        dont.center.x = self.view.center.x
+        self.view.addSubview(dont)
+        
+        regButton = UIButton(frame: CGRect(x: -50, y: UIScreen.main.bounds.height * 0.65 + 170, width: 50, height: 20))
+        regButton.setTitle("regButton", for: .normal)
+        regButton.setImage(UIImage(named: "Small Register"), for: .normal)
+        regButton.center.x = self.view.center.x
+        regButton.addTarget(self, action: #selector(changeAction), for: .touchUpInside)
+        self.view.addSubview(regButton)
         
         self.view.backgroundColor = .white
     }
@@ -98,6 +112,12 @@ class LoginViewController: UIViewController {
     
     @objc func backAction(){
         let vc = ViewController()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: false, completion: nil)
+    }
+    
+    @objc func changeAction(){
+        let vc = SignupViewController()
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: false, completion: nil)
     }
