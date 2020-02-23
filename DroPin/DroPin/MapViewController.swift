@@ -273,25 +273,76 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, MKMapView
             
             switch annotation.type { // Here is the order of the types ["Misc", "Basketball", "Soccer", "Frisbee", "Studying", "Gym", "Party", "Skating", "Snowboarding / Skiing", "Video Games"]
             case 0:
-                annotationView.image = UIImage(named: "Basketball pin icon")
+                let xImage = UIImage(named: "Basketball pin icon")
+                let size = CGSize(width: 50, height: 50)
+                UIGraphicsBeginImageContext(size)
+                xImage?.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+                let resizedXImage = UIGraphicsGetImageFromCurrentImageContext()
+                annotationView.image = resizedXImage
+                
             case 1:
-                annotationView.image = UIImage(named: "Soccer Pin icon")
+                let xImage = UIImage(named: "Soccer Pin icon")
+                let size = CGSize(width: 50, height: 50)
+                UIGraphicsBeginImageContext(size)
+                xImage?.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+                let resizedXImage = UIGraphicsGetImageFromCurrentImageContext()
+                annotationView.image = resizedXImage
             case 2:
-                annotationView.image = UIImage(named: "Frisbee pin icon")
+                let xImage = UIImage(named: "Frisbee pin icon")
+                let size = CGSize(width: 50, height: 50)
+                UIGraphicsBeginImageContext(size)
+                xImage?.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+                let resizedXImage = UIGraphicsGetImageFromCurrentImageContext()
+                annotationView.image = resizedXImage
             case 3:
-                annotationView.image = UIImage(named: "Studying pin icon")
+                let xImage = UIImage(named: "Studying pin icon")
+                let size = CGSize(width: 50, height: 50)
+                UIGraphicsBeginImageContext(size)
+                xImage?.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+                let resizedXImage = UIGraphicsGetImageFromCurrentImageContext()
+                annotationView.image = resizedXImage
             case 4:
-                annotationView.image = UIImage(named: "Gym Pin icon")
+                let xImage = UIImage(named: "Gym Pin icon")
+                let size = CGSize(width: 50, height: 50)
+                UIGraphicsBeginImageContext(size)
+                xImage?.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+                let resizedXImage = UIGraphicsGetImageFromCurrentImageContext()
+                annotationView.image = resizedXImage
             case 5:
-                annotationView.image = UIImage(named: "Party pin icon")
+                let xImage = UIImage(named: "Party pin icon")
+                let size = CGSize(width: 50, height: 50)
+                UIGraphicsBeginImageContext(size)
+                xImage?.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+                let resizedXImage = UIGraphicsGetImageFromCurrentImageContext()
+                annotationView.image = resizedXImage
             case 6:
-                annotationView.image = UIImage(named: "Skating pin icon")
+                let xImage = UIImage(named: "Skating pin icon")
+                let size = CGSize(width: 50, height: 50)
+                UIGraphicsBeginImageContext(size)
+                xImage?.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+                let resizedXImage = UIGraphicsGetImageFromCurrentImageContext()
+                annotationView.image = resizedXImage
             case 7:
-                annotationView.image = UIImage(named: "Skiing Pin icon")
+                let xImage = UIImage(named: "Skiing Pin icon")
+                let size = CGSize(width: 50, height: 50)
+                UIGraphicsBeginImageContext(size)
+                xImage?.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+                let resizedXImage = UIGraphicsGetImageFromCurrentImageContext()
+                annotationView.image = resizedXImage
             case 8:
-                annotationView.image = UIImage(named: "Video Gaming pin icon")
+                let xImage = UIImage(named: "Video Gaming pin icon")
+                let size = CGSize(width: 50, height: 50)
+                UIGraphicsBeginImageContext(size)
+                xImage?.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+                let resizedXImage = UIGraphicsGetImageFromCurrentImageContext()
+                annotationView.image = resizedXImage
             default: //Use misc here
-                annotationView.image = UIImage(named: "Misc pin icon")
+                let xImage = UIImage(named: "Misc pin icon")
+                let size = CGSize(width: 50, height: 50)
+                UIGraphicsBeginImageContext(size)
+                xImage?.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+                let resizedXImage = UIGraphicsGetImageFromCurrentImageContext()
+                annotationView.image = resizedXImage
             }
             
             var descHeight = 0

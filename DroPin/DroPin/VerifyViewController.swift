@@ -140,12 +140,6 @@ class VerifyViewController : UIViewController {
                         self.saveUser(json: responseString)
                         self.checkAuthorizationStatus()
                         
-                        if self.authorized {
-                            self.segueToMapVC()
-                        } else {
-                            self.segueToAccessVC()
-                        }
-                        
                     }
                 } else if responseString == "1" {
                     //phone number already in use
@@ -181,6 +175,7 @@ class VerifyViewController : UIViewController {
     func checkAuthorizationStatus() {
         checkNotificationAuthorizationStatus()
         checkLocationAuthoizationStatus()
+        
     }
     
     func checkNotificationAuthorizationStatus() {
@@ -188,11 +183,17 @@ class VerifyViewController : UIViewController {
         userNotification.getNotificationSettings(completionHandler: { (notificationSettings) in
             if notificationSettings.authorizationStatus == .authorized {
                 print("Authorized for notifications")
-                
+                DispatchQueue.main.async {
+                    self.segueToMapVC()
+                }
             } else {
                 print("Not authorized for notifications")
+                DispatchQueue.main.async {
+                    self.segueToAccessVC()
+                }
                 //Show user how to enable notifications
                 self.authorized = false
+                
             }
         })
     }
@@ -203,13 +204,22 @@ class VerifyViewController : UIViewController {
                 print("Authorized for location services")
             } else {
                 //Show user how to enable location services for the application
+                DispatchQueue.main.async {
+                    self.segueToAccessVC()
+                }
                 print("Not authorized for location services")
                 self.authorized = false
+                
+                
             }
         } else {
             //Entire phone is not enabled for location services
             //Show user how to enable location services
+            DispatchQueue.main.async {
+                self.segueToAccessVC()
+            }
             self.authorized = false
+            
         }
     }
 }
