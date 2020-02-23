@@ -23,9 +23,13 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, MKMapView
         initUI()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         locationManager.startUpdatingLocation()
-        
-        
     }
     
     func initUI() {
@@ -140,11 +144,20 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, MKMapView
     }
     
     func addAnnotations(events: [Event]) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let nowStr = dateFormatter.string(from: Date())
+        let now = dateFormatter.date(from: nowStr)
         for event in events {
-            if let lat = Double(event.lat), let lon = Double(event.lon), let latDeg = CLLocationDegrees(exactly: lat), let lonDeg = CLLocationDegrees(exactly: lon) {
-                let annotation = EventAnnotation(id: event.id, type: 0, committed: event.numberCommitted, desc: "Need: " + String(event.numberNeeded) + ", " + event.descrip, coordinate: CLLocationCoordinate2D(latitude: latDeg, longitude: lonDeg), title: event.title, userCommitted: event.userCommitted)
-                mapView.addAnnotation(annotation)
+            let date = dateFormatter.date(from: event.time)
+            
+            if let lat = Double(event.lat), let lon = Double(event.lon), let latDeg = CLLocationDegrees(exactly: lat), let lonDeg = CLLocationDegrees(exactly: lon), let now = now, let date = date {
+                if now < date {
+                    let annotation = EventAnnotation(id: event.id, type: 0, committed: event.numberCommitted, desc: "Need: " + String(event.numberNeeded) + ", " + event.descrip, coordinate: CLLocationCoordinate2D(latitude: latDeg, longitude: lonDeg), title: event.title, userCommitted: event.userCommitted, time: event.time)
+                    mapView.addAnnotation(annotation)
+                }
             }
+            
         }
         
     }

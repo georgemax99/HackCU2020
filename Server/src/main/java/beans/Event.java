@@ -1,5 +1,7 @@
 package beans;
 
+import java.util.Date;
+
 public class Event {
 	private Long id;
 	private Long userId;
@@ -12,6 +14,8 @@ public class Event {
 	private String state;
 	private String descrip;
 	private int userCommitted;
+	private String time;
+	private Date now;
 
 	public Long getId() {
 		return id;
@@ -99,5 +103,21 @@ public class Event {
 
 	public void setUserCommited(int userCommited) {
 		this.userCommitted = userCommited;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+	public Date getNow() {
+		return now;
+	}
+
+	public void setNow(Date now) {
+		this.now = now;
 	}
 }

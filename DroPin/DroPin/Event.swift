@@ -20,4 +20,5 @@ class Event : Codable {
     var descrip : String = ""
     var numberCommitted : Int = -1
     var userCommitted : Int = 0
+    var time : String = ""
 }
