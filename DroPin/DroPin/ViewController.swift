@@ -54,16 +54,21 @@ class ViewController: UIViewController {
         self.view.addSubview(signupButton)
         
         var imageView : UIImageView
-        imageView = UIImageView(frame:CGRect(x: 100, y: UIScreen.main.bounds.height * 0.35 - 160, width: 300, height: 150));
+        imageView = UIImageView(frame:CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.85, width: 300, height: 150));
         imageView.image = UIImage(named:"Logo")
         imageView.center.x = self.view.center.x * 1.15
         self.view.addSubview(imageView)
-        
         var orView : UIImageView
         orView = UIImageView(frame:CGRect(x: 100, y: UIScreen.main.bounds.height * 0.35 + 110, width: 25, height: 25));
         orView.image = UIImage(named:"or")
         orView.center.x = self.view.center.x - 5
         self.view.addSubview(orView)
+        
+        var slogan : UIImageView
+        slogan = UIImageView(frame:CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.72, width: 125, height: 40));
+        slogan.image = UIImage(named:"Drop_By_")
+        slogan.center.x = self.view.center.x - 5
+        self.view.addSubview(slogan)
         
         var mapimg : UIImageView
         mapimg  = UIImageView(frame:CGRect(x: 100, y: UIScreen.main.bounds.height * 0.35 + 180, width: 600, height: 400));
