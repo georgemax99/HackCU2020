@@ -14,7 +14,7 @@ class VerifyViewController : UIViewController {
     
     var codeField : UITextField!
     var errorLabel : UILabel!
-    var submitButton : UIButton!
+    var verifyButton : UIButton!
     
     var authorized = true
     
@@ -25,24 +25,59 @@ class VerifyViewController : UIViewController {
       }
 
       func initUI() {
+        
+        var bgColor : UIImageView
+        bgColor = UIImageView(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height));
+        bgColor.image = UIImage(named:"bgcolor")
+        bgColor.center.x = self.view.center.x
+        self.view.addSubview(bgColor)
           
         errorLabel = UILabel(frame: CGRect(x: 100, y: 50, width: 200, height: 50))
         errorLabel.text = "put error here"
         errorLabel.isHidden = true
         errorLabel.textColor = .red
         self.view.addSubview(errorLabel)
-          
-        codeField = UITextField(frame: CGRect(x: 100, y: 100, width: 200, height: 100))
-        codeField.placeholder = "code"
-        codeField.textColor = .black
-        self.view.addSubview(codeField)
         
-        submitButton = UIButton(frame: CGRect(x: 100, y: 200, width: 200, height: 100))
-        submitButton.setTitle("login", for: .normal)
-        submitButton.setTitleColor(.black, for: .normal)
-        submitButton.setImage(UIImage(named: "submitbutton"), for: .normal)
-        submitButton.addTarget(self, action: #selector(submitAction), for: .touchUpInside)
-        self.view.addSubview(submitButton)
+        var codefield : UIImageView
+        codefield = UIImageView(frame:CGRect(x: 100, y: UIScreen.main.bounds.height * 0.55, width: 240, height: 60));
+        codefield.image = UIImage(named:"Text box")
+        codefield.center.x = self.view.center.x
+        self.view.addSubview(codefield)
+        
+        let textField = UITextField(frame: CGRect(x: 100, y: UIScreen.main.bounds.height * 0.55, width: 180, height: 60))
+        textField.attributedPlaceholder = NSAttributedString(string: "Confirmation Code", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        textField.textColor = .white
+        textField.center.x = self.view.center.x + UIScreen.main.bounds.width * 0.025
+        self.view.addSubview(textField)
+        
+        var longw : UIImageView
+        longw = UIImageView(frame:CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.475, width: 360, height: 60));
+        longw.image = UIImage(named:"longwords")
+        longw.center.x = self.view.center.x
+        self.view.addSubview(longw)
+        
+        var almost : UIImageView
+        almost = UIImageView(frame:CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.6, width: 180, height: 90));
+        almost.image = UIImage(named:"Almost there")
+        almost.center.x = self.view.center.x
+        self.view.addSubview(almost)
+        
+        var icon : UIImageView
+        icon = UIImageView(frame:CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.75, width: 175, height: 180));
+        icon.image = UIImage(named:"plogo")
+        icon.center.x = self.view.center.x
+        self.view.addSubview(icon)
+        
+        
+        verifyButton = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.3, width: UIScreen.main.bounds.width * 0.5, height: UIScreen.main.bounds.height * 0.1))
+        verifyButton.setTitle("login", for: .normal)
+        verifyButton.setTitleColor(.black, for: .normal)
+        verifyButton.setImage(UIImage(named: "Verify"), for: .normal)
+        verifyButton.center.x = self.view.center.x
+        verifyButton.addTarget(self, action: #selector(submitAction), for: .touchUpInside)
+        self.view.addSubview(verifyButton)
+        
+        
         
         self.view.backgroundColor = .white
         

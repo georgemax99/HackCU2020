@@ -41,20 +41,26 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, MKMapView
         self.view.addSubview(mapView)
         
         var navb : UIImageView
-        navb = UIImageView(frame:CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.15, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.15));
-        navb.image = UIImage(named:"Bar")
+        navb = UIImageView(frame:CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.185, width: UIScreen.main.bounds.height * 0.13, height: UIScreen.main.bounds.height * 0.13));
+        navb.image = UIImage(named:"Bar logo base")
         navb.center.x = self.view.center.x
         self.view.addSubview(navb)
+        
+        var navbtop : UIImageView
+        navbtop = UIImageView(frame:CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.125, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.125));
+        navbtop.image = UIImage(named:"Bar Base")
+        navbtop.center.x = self.view.center.x
+        self.view.addSubview(navbtop)
                
         self.view.backgroundColor = .black
         
         var smlogo : UIImageView
-        smlogo = UIImageView(frame:CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.15, width: UIScreen.main.bounds.height * 0.1, height: UIScreen.main.bounds.height * 0.1));
+        smlogo = UIImageView(frame:CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.185, width: UIScreen.main.bounds.height * 0.1, height: UIScreen.main.bounds.height * 0.12));
         smlogo.image = UIImage(named:"Bar Logo")
         smlogo.center.x = self.view.center.x
         self.view.addSubview(smlogo)
         
-        addLocationButton = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.08, width: UIScreen.main.bounds.height * 0.05, height: UIScreen.main.bounds.height * 0.05))
+        addLocationButton = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.09, width: UIScreen.main.bounds.height * 0.05, height: UIScreen.main.bounds.height * 0.05))
         addLocationButton.setTitle("add location", for: .normal)
         addLocationButton.setTitleColor(.black, for: .normal)
         addLocationButton.setImage(UIImage(named: "Add_Pins"), for: .normal)
@@ -62,7 +68,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, MKMapView
         addLocationButton.addTarget(self, action: #selector(addLocationAction), for: .touchUpInside)
         self.view.addSubview(addLocationButton)
         
-        ProfButton = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.079, width: UIScreen.main.bounds.height * 0.04, height: UIScreen.main.bounds.height * 0.05))
+        ProfButton = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.09, width: UIScreen.main.bounds.height * 0.035, height: UIScreen.main.bounds.height * 0.05))
         ProfButton.setTitle("Profile", for: .normal)
         ProfButton.setTitleColor(.black, for: .normal)
         ProfButton.setImage(UIImage(named: "Me"), for: .normal)
@@ -70,7 +76,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, MKMapView
         ProfButton.addTarget(self, action: #selector(addLocationAction), for: .touchUpInside)
         self.view.addSubview(ProfButton)
         
-        PindButton = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.08, width: UIScreen.main.bounds.height * 0.05, height: UIScreen.main.bounds.height * 0.05))
+        PindButton = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.09, width: UIScreen.main.bounds.height * 0.05, height: UIScreen.main.bounds.height * 0.05))
         PindButton.setTitle("MyPind", for: .normal)
         PindButton.setTitleColor(.black, for: .normal)
         PindButton.setImage(UIImage(named: "My Pin'd"), for: .normal)
@@ -78,7 +84,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, MKMapView
         PindButton.addTarget(self, action: #selector(addLocationAction), for: .touchUpInside)
         self.view.addSubview(PindButton)
         
-        HomeButton = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.09, width: UIScreen.main.bounds.height * 0.1, height: UIScreen.main.bounds.height * 0.06))
+        HomeButton = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.1, width: UIScreen.main.bounds.height * 0.1, height: UIScreen.main.bounds.height * 0.06))
         HomeButton.setTitle("Home", for: .normal)
         HomeButton.setTitleColor(.black, for: .normal)
         HomeButton.setImage(UIImage(named: "Home"), for: .normal)
