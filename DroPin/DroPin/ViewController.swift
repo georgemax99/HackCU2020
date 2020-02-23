@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     
     var loginButton : UIButton!
     var signupButton : UIButton!
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +36,8 @@ class ViewController: UIViewController {
         bgColor.image = UIImage(named:"bgcolor")
         bgColor.center.x = self.view.center.x
         self.view.addSubview(bgColor)
+        
+
         
         loginButton = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height * 0.35, width: 200, height: 100))
         loginButton.setTitle("Sign In", for: .normal)

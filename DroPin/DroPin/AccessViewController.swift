@@ -17,10 +17,12 @@ class AccessViewController: UIViewController {
 
     var accessLabel : UILabel!
     var submitButton : UIButton!
-    var count = 1
+    var count = 0
     var locationInit = false
     var backButton : UIButton!
-    
+    var topImage : UIImageView!
+    var top1Image : UIImageView!
+    var top2Image : UIImageView!
     let locationManager = CLLocationManager()
     
     let group = DispatchGroup()
@@ -36,20 +38,30 @@ class AccessViewController: UIViewController {
     func initUI() {
         
         var bgColor : UIImageView
-        bgColor = UIImageView(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height));
+        bgColor = UIImageView(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         bgColor.image = UIImage(named:"bgcolor")
-        bgColor.center.x = self.view.center.x
         self.view.addSubview(bgColor)
         
-        accessLabel = UILabel(frame: CGRect(x: 100, y: 50, width: 200, height: 200))
-        accessLabel.text = "Notifications"
-        accessLabel.textColor = .black
-        self.view.addSubview(accessLabel)
+        topImage = UIImageView(frame: CGRect(x: 0, y: UIScreen.main.bounds.width * 0.25, width: UIScreen.main.bounds.width * 0.6, height: UIScreen.main.bounds.width * 0.6))
+        topImage.image = UIImage(named: "Top Pic")
+        topImage.center.x = self.view.center.x
+        self.view.addSubview(topImage)
         
-        submitButton = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.35, width: UIScreen.main.bounds.width * 0.5, height: UIScreen.main.bounds.height * 0.1))
-        submitButton.setTitle("Submit", for: .normal)
+        top1Image = UIImageView(frame: CGRect(x: 0, y: UIScreen.main.bounds.width * 0.25 + UIScreen.main.bounds.width * 0.6 + 20, width: 300, height: 100))
+        top1Image.image = UIImage(named: "Welcome to Dropin")
+        top1Image.center.x = self.view.center.x + UIScreen.main.bounds.width * 0.05
+        self.view.addSubview(top1Image)
+        
+        top2Image = UIImageView(frame: CGRect(x: 0, y: UIScreen.main.bounds.width * 0.25 + UIScreen.main.bounds.width * 0.6 + 80, width: 150, height: 25))
+        top2Image.image = UIImage(named: "Drop by and stay connected")
+        top2Image.center.x = self.view.center.x
+        self.view.addSubview(top2Image)
+        
+        submitButton = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - (UIScreen.main.bounds.height * 0.35), width: UIScreen.main.bounds.width * 0.5, height: UIScreen.main.bounds.height * 0.1))
+        //submitButton.setTitle("Submit", for: .normal)
         submitButton.setTitleColor(.black, for: .normal)
-        submitButton.setImage(UIImage(named: "submitButton"), for: .normal)
+        submitButton.setImage(UIImage(named: "submitbutton"), for: .normal)
+    
         submitButton.addTarget(self, action: #selector(submitAction), for: .touchUpInside)
         self.view.addSubview(submitButton)
         
@@ -82,9 +94,25 @@ class AccessViewController: UIViewController {
     }
     
     func showAccess() {
-        if count == 1 {
+        if count == 0 {
+            topImage.image = nil
+            topImage.bounds = CGRect(x: 0, y: UIScreen.main.bounds.width * 0.25, width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.width * 0.6)
+            topImage.center.x = self.view.center.x
+            topImage.image = UIImage(named: "Top Pic_1")
+            top1Image.image = UIImage(named: "Notifications")
+            top1Image.frame = CGRect(x: 0, y: UIScreen.main.bounds.width * 0.25 + UIScreen.main.bounds.width * 0.8 + 10 , width: 300, height: 50)
+            top1Image.center.x = self.view.center.x
+            top2Image.image = UIImage(named: "Bla Bla Bla Bla-1")
+            top2Image.frame = CGRect(x: 0, y: UIScreen.main.bounds.width * 0.25 + UIScreen.main.bounds.width * 0.8 + 70, width: 300, height: 50)
+            top2Image.center.x = self.view.center.x
+        } else if count == 1 {
             registerForPushNotifications()
-            accessLabel.text = "Locations"
+            topImage.image = UIImage(named: "Top Pic_2")
+            top1Image.image = UIImage(named: "Locations")
+            top1Image.bounds = CGRect(x: 0, y: UIScreen.main.bounds.width * 0.25, width: 300, height: 50)
+            top1Image.center.x = self.view.center.x
+            top2Image.image = UIImage(named: "bla bla bla")
+            top2Image.bounds = CGRect(x: 0, y: UIScreen.main.bounds.width * 0.25 + 150, width: 300, height: 50)
         } else if count == 2 {
             requestLocationServices()
         }
