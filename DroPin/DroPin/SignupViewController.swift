@@ -14,6 +14,7 @@ class SignupViewController: UIViewController {
     var phoneNumberField : UITextField!
     var submitButton : UIButton!
     var errorLabel : UILabel!
+    var backButton : UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,12 @@ class SignupViewController: UIViewController {
         submitButton.addTarget(self, action: #selector(submitAction), for: .touchUpInside)
         self.view.addSubview(submitButton)
         
+        backButton = UIButton(frame: CGRect(x: -25, y: 0, width: 200, height: 100))
+        backButton.setTitle("<", for: .normal)
+        backButton.setTitleColor(.black, for: .normal)
+        backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+        self.view.addSubview(backButton)
+        
         self.view.backgroundColor = .white
     }
     
@@ -75,6 +82,12 @@ class SignupViewController: UIViewController {
             
             
         }
+    }
+    
+    @objc func backAction(){
+        let vc = ViewController()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: false, completion: nil)
     }
     
     func sendSignupPost(url : String, parameters : [String : Any]) {
