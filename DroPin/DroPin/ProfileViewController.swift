@@ -17,6 +17,7 @@ class ProfileViewController : UIViewController {
     var ProfButton : UIButton!
     var PindButton : UIButton!
     var HomeButton : UIButton!
+    var backButton :UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,21 +39,36 @@ class ProfileViewController : UIViewController {
             do {
                 let user = try decoder.decode(User.self, from: userData as! Data)
         
-                nameLabel = UILabel(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.7, width: 200, height: 100))
-                nameLabel.text = "Jack Lambert"
+                nameLabel = UILabel(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.65, width: 200, height: 100))
+                nameLabel.text = user.name
                 nameLabel.textColor = .white
-                nameLabel.center.x = self.view.center.x + UIScreen.main.bounds.height * 0.05
+                nameLabel.center.x = self.view.center.x + UIScreen.main.bounds.height * 0.1
                 self.view.addSubview(nameLabel)
             } catch {
                 print(error.localizedDescription)
             }
         }
         
-        addInterestsButton = UIButton(frame: CGRect(x: 100, y: 300, width: 200, height: 100))
+        
+        addInterestsButton = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.5, width: 120, height: 50))
         addInterestsButton.setTitle("Add Interests", for: .normal)
         addInterestsButton.setTitleColor(.black, for: .normal)
+        addInterestsButton.setImage(UIImage(named: "My Interests"), for: .normal)
+        addInterestsButton.center.x = self.view.center.x
         addInterestsButton.addTarget(self, action: #selector(segueToAddInterestsVC), for: .touchUpInside)
         self.view.addSubview(addInterestsButton)
+        
+        var profilepic : UIImageView
+        profilepic = UIImageView(frame:CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.9, width: 200, height: 200));
+        profilepic.image = UIImage(named:"Profile Pic placeholder")
+        profilepic.center.x = self.view.center.x
+        self.view.addSubview(profilepic)
+        
+        var ppdesign : UIImageView
+        ppdesign = UIImageView(frame:CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.935, width: 400, height: 400));
+        ppdesign.image = UIImage(named:"Profile Pic leg")
+        ppdesign.center.x = self.view.center.x
+        self.view.addSubview(ppdesign)
         
         
         
@@ -109,6 +125,13 @@ class ProfileViewController : UIViewController {
             self.view.addSubview(HomeButton)
             
             self.view.backgroundColor = .white
+        
+            backButton = UIButton(frame: CGRect(x: -50, y: UIScreen.main.bounds.height * 0.08, width: 50, height: 50))
+            backButton.setTitle("backarrow", for: .normal)
+            backButton.setImage(UIImage(named: "arrow"), for: .normal)
+            backButton.center.x = self.view.center.x - 140
+            backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+            self.view.addSubview(backButton)
     }
         
         @objc func addLocationAction() {
@@ -131,6 +154,12 @@ class ProfileViewController : UIViewController {
     
     @objc func segueToAddInterestsVC() {
         let vc = AddInterestsViewController()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: false, completion: nil)
+    }
+    
+    @objc func backAction(){
+        let vc = MapViewController()
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: false, completion: nil)
     }

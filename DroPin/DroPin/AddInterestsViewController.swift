@@ -17,6 +17,7 @@ class AddInterestsViewController : UIViewController, UITableViewDelegate, UITabl
     var ProfButton : UIButton!
     var PindButton : UIButton!
     var HomeButton : UIButton!
+    var backButton : UIButton!
     
     let types = ["Misc", "Basketball", "Soccer", "Frisbee", "Studying", "Gym", "Party", "Skating", "Snowboarding / Skiing", "Video Games"]
     
@@ -41,12 +42,6 @@ class AddInterestsViewController : UIViewController, UITableViewDelegate, UITabl
         bgColor.image = UIImage(named:"bgcolor")
         bgColor.center.x = self.view.center.x
         self.view.addSubview(bgColor)
-        
-        submitButton = UIButton(frame: CGRect(x: 100, y: 0, width: 200, height: 100))
-        submitButton.setTitleColor(.white, for: .normal)
-        submitButton.setTitle("Submit", for: .normal)
-        submitButton.addTarget(self, action: #selector(submitAction), for: .touchUpInside)
-        self.view.addSubview(submitButton)
         
         tableView = UITableView(frame: CGRect(x: 0, y: 100, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 100))
         tableView.delegate = self
@@ -108,6 +103,21 @@ class AddInterestsViewController : UIViewController, UITableViewDelegate, UITabl
         
         self.view.backgroundColor = .white
         
+        backButton = UIButton(frame: CGRect(x: -50, y: UIScreen.main.bounds.height * 0.04, width: 50, height: 50))
+        backButton.setTitle("backarrow", for: .normal)
+        backButton.setImage(UIImage(named: "arrow"), for: .normal)
+        backButton.center.x = self.view.center.x - 140
+        backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+        self.view.addSubview(backButton)
+        
+        submitButton = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.3, width: 200, height: 100))
+        submitButton.setTitleColor(.white, for: .normal)
+        submitButton.setTitle("Submit", for: .normal)
+        submitButton.setImage(UIImage(named: "submitbutton"), for: .normal)
+        submitButton.center.x = self.view.center.x
+        submitButton.addTarget(self, action: #selector(submitAction), for: .touchUpInside)
+        self.view.addSubview(submitButton)
+        
         
     }
         @objc func addLocationAction() {
@@ -130,6 +140,12 @@ class AddInterestsViewController : UIViewController, UITableViewDelegate, UITabl
     
     @objc func segueToAddInterestsVC() {
         let vc = AddInterestsViewController()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: false, completion: nil)
+    }
+    
+    @objc func backAction(){
+        let vc = MapViewController()
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: false, completion: nil)
     }
