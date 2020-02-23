@@ -16,8 +16,8 @@ public class EventSql {
 		ResultSet rs = null;
 		try {
 			String sql = "insert into event ( " +
-					"userId, numberNeeded, numberCommitted, title, city, state, lon, lat, descrip, time, now " +
-					") values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+					"userId, numberNeeded, numberCommitted, title, city, state, lon, lat, descrip, time, now, type " +
+					") values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 			stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			stmt.setLong(1, event.getUserId());
 			stmt.setInt(2, event.getNumberNeeded());
@@ -30,6 +30,7 @@ public class EventSql {
 			stmt.setString(9, event.getDescrip());
 			stmt.setString(10, event.getTime());
 			stmt.setDate(11, new java.sql.Date(event.getNow().getTime()));
+			stmt.setInt(12, event.getType());
 			stmt.executeUpdate();
 			rs = stmt.getGeneratedKeys();
 			if (rs.next())

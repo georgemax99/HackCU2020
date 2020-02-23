@@ -1,6 +1,9 @@
 sql/EventSql.class
+beans/Type.class
 beans/Event.class
 beans/User.class
+servlets/GetTypesServlet.class
+sql/TypeSql.class
 util/SQLUtil.class
 beans/Commit.class
 servlets/VerificationServlet.class
@@ -10,6 +13,7 @@ servlets/LoginServlet.class
 servlets/AddCommitServlet.class
 servlets/AddEventServlet.class
 util/TextUtil.class
+servlets/AddTypesServlet.class
 servlets/GetEventsServlet.class
 sql/UserSql.class
 beans/Code.class

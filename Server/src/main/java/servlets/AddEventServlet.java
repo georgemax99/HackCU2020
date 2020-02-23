@@ -25,6 +25,7 @@ public class AddEventServlet extends HttpServlet {
 		Long userId = Long.parseLong(req.getParameter("userId"));
 		String description = req.getParameter("description");
 		String time = req.getParameter("time");
+		int type = Integer.parseInt(req.getParameter("type"));
 
 		EventSql eventSql = new EventSql();
 		eventSql.deleteByUserId(userId);
@@ -42,6 +43,7 @@ public class AddEventServlet extends HttpServlet {
 		event.setUserCommited(0);
 		event.setTime(time);
 		event.setNow(new Date());
+		event.setType(type);
 
 		eventSql.create(event);
 

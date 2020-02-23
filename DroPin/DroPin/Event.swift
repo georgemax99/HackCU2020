@@ -21,4 +21,5 @@ class Event : Codable {
     var numberCommitted : Int = -1
     var userCommitted : Int = 0
     var time : String = ""
+    var type : Int = 0
 }
