@@ -11,6 +11,8 @@ import UIKit
 
 class MapViewController : UIViewController {
     
+    var addLocationButton : UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -18,7 +20,17 @@ class MapViewController : UIViewController {
     }
     
     func initUI() {
+        addLocationButton = UIButton(frame: CGRect(x: 100, y: 200, width: 200, height: 100))
+        addLocationButton.setTitle("add location", for: .normal)
+        addLocationButton.setTitleColor(.black, for: .normal)
+        addLocationButton.addTarget(self, action: #selector(addLocationAction), for: .touchUpInside)
+        self.view.addSubview(addLocationButton)
+        
         self.view.backgroundColor = .white
+    }
+    
+    @objc func addLocationAction() {
+        
     }
     
 }
