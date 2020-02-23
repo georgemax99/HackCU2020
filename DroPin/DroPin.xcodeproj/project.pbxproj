@@ -21,6 +21,7 @@
 		52EC23F12401EEF7001D861C /* AccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC23F02401EEF7001D861C /* AccessViewController.swift */; };
 		52EC23F32401F04B001D861C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC23F22401F04B001D861C /* MapViewController.swift */; };
 		52EC23F52401FC21001D861C /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC23F42401FC21001D861C /* AddEventViewController.swift */; };
+		52EC23F7240210A5001D861C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC23F6240210A5001D861C /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		52EC23F02401EEF7001D861C /* AccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessViewController.swift; sourceTree = "<group>"; };
 		52EC23F22401F04B001D861C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		52EC23F42401FC21001D861C /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
+		52EC23F6240210A5001D861C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				52EC23EE2401E8CF001D861C /* VerifyViewController.swift */,
 				52EC23F22401F04B001D861C /* MapViewController.swift */,
 				52EC23F42401FC21001D861C /* AddEventViewController.swift */,
+				52EC23F6240210A5001D861C /* User.swift */,
 			);
 			path = DroPin;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				52EC23BA2401B97B001D861C /* AppDelegate.swift in Sources */,
 				52EC23BC2401B97B001D861C /* SceneDelegate.swift in Sources */,
 				52EC23F52401FC21001D861C /* AddEventViewController.swift in Sources */,
+				52EC23F7240210A5001D861C /* User.swift in Sources */,
 				52EC23F32401F04B001D861C /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

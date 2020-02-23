@@ -1,7 +1,9 @@
 util/SQLUtil.class
+sql/EventSql.class
 servlets/VerificationServlet.class
 servlets/SignupServlet.class
 servlets/LoginServlet.class
+servlets/AddEventServlet.class
 beans/Event.class
 beans/User.class
 util/TextUtil.class
