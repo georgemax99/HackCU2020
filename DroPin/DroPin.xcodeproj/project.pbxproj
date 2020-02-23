@@ -18,6 +18,8 @@
 		52EC23EB2401DD1A001D861C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC23EA2401DD1A001D861C /* LoginViewController.swift */; };
 		52EC23ED2401E098001D861C /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC23EC2401E098001D861C /* SignupViewController.swift */; };
 		52EC23EF2401E8CF001D861C /* VerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC23EE2401E8CF001D861C /* VerifyViewController.swift */; };
+		52EC23F12401EEF7001D861C /* AccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC23F02401EEF7001D861C /* AccessViewController.swift */; };
+		52EC23F32401F04B001D861C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC23F22401F04B001D861C /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		52EC23EA2401DD1A001D861C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		52EC23EC2401E098001D861C /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		52EC23EE2401E8CF001D861C /* VerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyViewController.swift; sourceTree = "<group>"; };
+		52EC23F02401EEF7001D861C /* AccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessViewController.swift; sourceTree = "<group>"; };
+		52EC23F22401F04B001D861C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,7 @@
 		52EC23B82401B97B001D861C /* DroPin */ = {
 			isa = PBXGroup;
 			children = (
+				52EC23F02401EEF7001D861C /* AccessViewController.swift */,
 				52EC23B92401B97B001D861C /* AppDelegate.swift */,
 				52EC23BD2401B97B001D861C /* ViewController.swift */,
 				52EC23BB2401B97B001D861C /* SceneDelegate.swift */,
@@ -115,6 +120,7 @@
 				52EC23EA2401DD1A001D861C /* LoginViewController.swift */,
 				52EC23EC2401E098001D861C /* SignupViewController.swift */,
 				52EC23EE2401E8CF001D861C /* VerifyViewController.swift */,
+				52EC23F22401F04B001D861C /* MapViewController.swift */,
 			);
 			path = DroPin;
 			sourceTree = "<group>";
@@ -272,8 +278,10 @@
 				52EC23BE2401B97B001D861C /* ViewController.swift in Sources */,
 				52EC23ED2401E098001D861C /* SignupViewController.swift in Sources */,
 				52EC23EF2401E8CF001D861C /* VerifyViewController.swift in Sources */,
+				52EC23F12401EEF7001D861C /* AccessViewController.swift in Sources */,
 				52EC23BA2401B97B001D861C /* AppDelegate.swift in Sources */,
 				52EC23BC2401B97B001D861C /* SceneDelegate.swift in Sources */,
+				52EC23F32401F04B001D861C /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
