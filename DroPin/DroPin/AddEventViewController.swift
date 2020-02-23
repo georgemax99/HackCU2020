@@ -48,7 +48,19 @@ class AddEventViewController : UIViewController, CLLocationManagerDelegate {
     }
     
     @objc func submitAction() {
-        locationManager.startUpdatingLocation()
+        
+        if let eventName = eventNameField.text, let numNeeded = numNeededField.text {
+            if eventName != "" && numNeeded != "" {
+                locationManager.startUpdatingLocation()
+            } else if eventName == "" && numNeeded == "" {
+                //error both fields are empty
+            } else if eventName == "" {
+                //error event name is empty
+            } else {
+                //error num needed is empty
+            }
+        }
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
