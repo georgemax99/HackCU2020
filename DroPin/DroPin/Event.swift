@@ -17,4 +17,7 @@ class Event : Codable {
     var lon : String = ""
     var city : String = ""
     var state : String = ""
+    var descrip : String = ""
+    var numberCommitted : Int = -1
+    var userCommitted : Int = 0
 }

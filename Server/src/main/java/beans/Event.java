@@ -10,6 +10,8 @@ public class Event {
 	private String lon;
 	private String city;
 	private String state;
+	private String descrip;
+	private int userCommitted;
 
 	public Long getId() {
 		return id;
@@ -81,5 +83,21 @@ public class Event {
 
 	public void setState(String state) {
 		this.state = state;
+	}
+
+	public String getDescrip() {
+		return descrip;
+	}
+
+	public void setDescrip(String descrip) {
+		this.descrip = descrip;
+	}
+
+	public int getUserCommited() {
+		return userCommitted;
+	}
+
+	public void setUserCommited(int userCommited) {
+		this.userCommitted = userCommited;
 	}
 }

@@ -1,4 +1,5 @@
 /Users/adammac1/Desktop/HackCU2020/HackCU2020/Server/src/main/java/servlets/LoginServlet.java
+/Users/adammac1/Desktop/HackCU2020/HackCU2020/Server/src/main/java/sql/CommitSql.java
 /Users/adammac1/Desktop/HackCU2020/HackCU2020/Server/src/main/java/servlets/SignupServlet.java
 /Users/adammac1/Desktop/HackCU2020/HackCU2020/Server/src/main/java/sql/UserSql.java
 /Users/adammac1/Desktop/HackCU2020/HackCU2020/Server/src/main/java/beans/Code.java
@@ -7,7 +8,9 @@
 /Users/adammac1/Desktop/HackCU2020/HackCU2020/Server/src/main/java/util/SQLUtil.java
 /Users/adammac1/Desktop/HackCU2020/HackCU2020/Server/src/main/java/beans/Event.java
 /Users/adammac1/Desktop/HackCU2020/HackCU2020/Server/src/main/java/sql/CodeSql.java
+/Users/adammac1/Desktop/HackCU2020/HackCU2020/Server/src/main/java/servlets/AddCommitServlet.java
 /Users/adammac1/Desktop/HackCU2020/HackCU2020/Server/src/main/java/servlets/GetEventsServlet.java
 /Users/adammac1/Desktop/HackCU2020/HackCU2020/Server/src/main/java/util/TextUtil.java
 /Users/adammac1/Desktop/HackCU2020/HackCU2020/Server/src/main/java/servlets/AddEventServlet.java
+/Users/adammac1/Desktop/HackCU2020/HackCU2020/Server/src/main/java/beans/Commit.java
 /Users/adammac1/Desktop/HackCU2020/HackCU2020/Server/src/main/java/servlets/VerificationServlet.java
