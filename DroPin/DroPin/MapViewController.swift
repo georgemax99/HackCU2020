@@ -67,7 +67,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, MKMapView
         ProfButton.setTitleColor(.black, for: .normal)
         ProfButton.setImage(UIImage(named: "Me"), for: .normal)
         ProfButton.center.x = self.view.center.x + UIScreen.main.bounds.width * 0.38
-        ProfButton.addTarget(self, action: #selector(addLocationAction), for: .touchUpInside)
+        ProfButton.addTarget(self, action: #selector(segueToProfileVC), for: .touchUpInside)
         self.view.addSubview(ProfButton)
         
         PindButton = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.08, width: UIScreen.main.bounds.height * 0.05, height: UIScreen.main.bounds.height * 0.05))
@@ -89,10 +89,16 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, MKMapView
        
     }
     
+    @objc func segueToProfileVC() {
+        let vc = ProfileViewController()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: false, completion: nil)
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
                 
         if let loc = manager.location {
-            let distanceSpan = 3000
+            let distanceSpan = 6000
             
             if let coordinate = manager.location?.coordinate {
                 let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: CLLocationDistance(distanceSpan), longitudinalMeters: CLLocationDistance(distanceSpan))
@@ -196,7 +202,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, MKMapView
             
             if let lat = Double(event.lat), let lon = Double(event.lon), let latDeg = CLLocationDegrees(exactly: lat), let lonDeg = CLLocationDegrees(exactly: lon), let now = now, let date = date {
                 if now < date {
-                    let annotation = EventAnnotation(id: event.id, type: 0, committed: event.numberCommitted, desc: "Need: " + String(event.numberNeeded) + ", " + event.descrip, coordinate: CLLocationCoordinate2D(latitude: latDeg, longitude: lonDeg), title: event.title, userCommitted: event.userCommitted, time: event.time)
+                    let annotation = EventAnnotation(id: event.id, type: event.type, committed: event.numberCommitted, desc: "Need: " + String(event.numberNeeded) + ", " + event.descrip, coordinate: CLLocationCoordinate2D(latitude: latDeg, longitude: lonDeg), title: event.title, userCommitted: event.userCommitted, time: event.time)
                     mapView.addAnnotation(annotation)
                 }
             }

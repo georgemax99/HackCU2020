@@ -24,6 +24,9 @@
 		52EC23F7240210A5001D861C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC23F6240210A5001D861C /* User.swift */; };
 		52EC23F92402212C001D861C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC23F82402212C001D861C /* Event.swift */; };
 		52EC23FB24024C03001D861C /* EventAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC23FA24024C03001D861C /* EventAnnotation.swift */; };
+		52EC23FD240292FA001D861C /* AddInterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC23FC240292FA001D861C /* AddInterestsViewController.swift */; };
+		52EC23FF240295AB001D861C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC23FE240295AB001D861C /* ProfileViewController.swift */; };
+		52EC24012402A38D001D861C /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC24002402A38D001D861C /* Type.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,9 @@
 		52EC23F6240210A5001D861C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		52EC23F82402212C001D861C /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		52EC23FA24024C03001D861C /* EventAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAnnotation.swift; sourceTree = "<group>"; };
+		52EC23FC240292FA001D861C /* AddInterestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInterestsViewController.swift; sourceTree = "<group>"; };
+		52EC23FE240295AB001D861C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		52EC24002402A38D001D861C /* Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Type.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +139,9 @@
 				52EC23F6240210A5001D861C /* User.swift */,
 				52EC23F82402212C001D861C /* Event.swift */,
 				52EC23FA24024C03001D861C /* EventAnnotation.swift */,
+				52EC23FC240292FA001D861C /* AddInterestsViewController.swift */,
+				52EC23FE240295AB001D861C /* ProfileViewController.swift */,
+				52EC24002402A38D001D861C /* Type.swift */,
 			);
 			path = DroPin;
 			sourceTree = "<group>";
@@ -290,12 +299,15 @@
 				52EC23F92402212C001D861C /* Event.swift in Sources */,
 				52EC23BE2401B97B001D861C /* ViewController.swift in Sources */,
 				52EC23ED2401E098001D861C /* SignupViewController.swift in Sources */,
+				52EC23FF240295AB001D861C /* ProfileViewController.swift in Sources */,
+				52EC24012402A38D001D861C /* Type.swift in Sources */,
 				52EC23EF2401E8CF001D861C /* VerifyViewController.swift in Sources */,
 				52EC23FB24024C03001D861C /* EventAnnotation.swift in Sources */,
 				52EC23F12401EEF7001D861C /* AccessViewController.swift in Sources */,
 				52EC23BA2401B97B001D861C /* AppDelegate.swift in Sources */,
 				52EC23BC2401B97B001D861C /* SceneDelegate.swift in Sources */,
 				52EC23F52401FC21001D861C /* AddEventViewController.swift in Sources */,
+				52EC23FD240292FA001D861C /* AddInterestsViewController.swift in Sources */,
 				52EC23F7240210A5001D861C /* User.swift in Sources */,
 				52EC23F32401F04B001D861C /* MapViewController.swift in Sources */,
 			);

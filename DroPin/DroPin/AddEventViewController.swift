@@ -10,14 +10,18 @@ import Foundation
 import UIKit
 import CoreLocation
 
-class AddEventViewController : UIViewController, CLLocationManagerDelegate, UITextViewDelegate {
+class AddEventViewController : UIViewController, CLLocationManagerDelegate, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
     var eventNameField : UITextField!
     var numNeededField : UITextField!
     var descriptionField : UITextView!
     var timePicker : UIDatePicker!
     var submitButton : UIButton!
+    var typePicker : UIPickerView!
+    var typeField : UITextField!
     var locationManager = CLLocationManager()
+    var type = 0
+    let types = ["Misc", "Basketball", "Soccer", "Frisbee", "Studying", "Gym", "Party", "Skating", "Snowboarding / Skiing", "Video Games"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,11 +54,19 @@ class AddEventViewController : UIViewController, CLLocationManagerDelegate, UITe
         timePicker.datePickerMode = .time
         self.view.addSubview(timePicker)
         
+        typePicker = UIPickerView()
+        typePicker.delegate = self
+        typeField = UITextField(frame: CGRect(x: 100, y: 700, width: 200, height: 100))
+        typeField.inputView = typePicker
+        self.view.addSubview(typeField)
+        
         submitButton = UIButton(frame: CGRect(x: 100, y: 200, width: 200, height: 100))
         submitButton.setTitle("login", for: .normal)
         submitButton.setTitleColor(.black, for: .normal)
         submitButton.addTarget(self, action: #selector(submitAction), for: .touchUpInside)
         self.view.addSubview(submitButton)
+        
+        dismissPickerView()
         
         self.view.backgroundColor = .white
     }
@@ -123,7 +135,8 @@ class AddEventViewController : UIViewController, CLLocationManagerDelegate, UITe
                             "numNeeded" : numNeeded,
                             "userId" : userId,
                             "description" : desc,
-                            "time" : time
+                            "time" : time,
+                            "type" : self.type
                         ]
                         self.sendAddEventPost(url: "http://Dropin-env.b7vjewtmgu.us-east-1.elasticbeanstalk.com/addEvent", parameters: parameters)
                     }
@@ -190,5 +203,34 @@ class AddEventViewController : UIViewController, CLLocationManagerDelegate, UITe
         return numberOfChars < 255
     }
     
+    func dismissPickerView() {
+       let toolBar = UIToolbar()
+       toolBar.sizeToFit()
+        let button = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.action))
+       toolBar.setItems([button], animated: true)
+       toolBar.isUserInteractionEnabled = true
+       typeField.inputAccessoryView = toolBar
+    }
+    
+    @objc func action() {
+          view.endEditing(true)
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return types.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return types[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        type = row
+        typeField.text = types[row]
+    }
     
 }

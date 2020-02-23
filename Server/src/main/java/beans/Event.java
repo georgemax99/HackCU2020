@@ -16,6 +16,7 @@ public class Event {
 	private int userCommitted;
 	private String time;
 	private Date now;
+	private int type;
 
 	public Long getId() {
 		return id;
@@ -119,5 +120,13 @@ public class Event {
 
 	public void setNow(Date now) {
 		this.now = now;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
 	}
 }
