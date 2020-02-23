@@ -20,6 +20,8 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, MKMapView
     var PindButton : UIButton!
     var ProfButton : UIButton!
     
+    var filter = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -75,7 +77,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, MKMapView
         PindButton.setTitleColor(.black, for: .normal)
         PindButton.setImage(UIImage(named: "My Pin'd"), for: .normal)
         PindButton.center.x = self.view.center.x + UIScreen.main.bounds.width * 0.19
-        PindButton.addTarget(self, action: #selector(addLocationAction), for: .touchUpInside)
+        PindButton.addTarget(self, action: #selector(filterCommitted), for: .touchUpInside)
         self.view.addSubview(PindButton)
         
         HomeButton = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.09, width: UIScreen.main.bounds.height * 0.1, height: UIScreen.main.bounds.height * 0.06))
@@ -193,22 +195,52 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, MKMapView
     }
     
     func addAnnotations(events: [Event]) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        let nowStr = dateFormatter.string(from: Date())
-        let now = dateFormatter.date(from: nowStr)
-        for event in events {
-            let date = dateFormatter.date(from: event.time)
-            
-            if let lat = Double(event.lat), let lon = Double(event.lon), let latDeg = CLLocationDegrees(exactly: lat), let lonDeg = CLLocationDegrees(exactly: lon), let now = now, let date = date {
-                if now < date {
-                    let annotation = EventAnnotation(id: event.id, type: event.type, committed: event.numberCommitted, desc: "Need: " + String(event.numberNeeded) + ", " + event.descrip, coordinate: CLLocationCoordinate2D(latitude: latDeg, longitude: lonDeg), title: event.title, userCommitted: event.userCommitted, time: event.time)
-                    mapView.addAnnotation(annotation)
+        
+        if filter == false {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "HH:mm"
+            let nowStr = dateFormatter.string(from: Date())
+            let now = dateFormatter.date(from: nowStr)
+            for event in events {
+                let date = dateFormatter.date(from: event.time)
+                
+                if let lat = Double(event.lat), let lon = Double(event.lon), let latDeg = CLLocationDegrees(exactly: lat), let lonDeg = CLLocationDegrees(exactly: lon), let now = now, let date = date {
+                   if now < date {
+                        DispatchQueue.main.async {
+                            let annotation = EventAnnotation(id: event.id, type: event.type, committed: event.numberCommitted, desc: "At: " + event.time + ", Need: " + String(event.numberNeeded) + ", " + event.descrip, coordinate: CLLocationCoordinate2D(latitude: latDeg, longitude: lonDeg), title: event.title, userCommitted: event.userCommitted, time: event.time)
+                            self.mapView.addAnnotation(annotation)
+                        }
+                   }
                 }
+                
             }
-            
+        } else {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "HH:mm"
+            let nowStr = dateFormatter.string(from: Date())
+            let now = dateFormatter.date(from: nowStr)
+            for event in events {
+                let date = dateFormatter.date(from: event.time)
+                
+                if let lat = Double(event.lat), let lon = Double(event.lon), let latDeg = CLLocationDegrees(exactly: lat), let lonDeg = CLLocationDegrees(exactly: lon), let now = now, let date = date {
+                    if now < date && event.userCommitted == 1 {
+                        DispatchQueue.main.async {
+                            let annotation = EventAnnotation(id: event.id, type: event.type, committed: event.numberCommitted, desc: "At: " + event.time + ", Need: " + String(event.numberNeeded) + ", " + event.descrip, coordinate: CLLocationCoordinate2D(latitude: latDeg, longitude: lonDeg), title: event.title, userCommitted: event.userCommitted, time: event.time)
+                            self.mapView.addAnnotation(annotation)
+                             
+                        }
+                    }
+                }
+                
+            }
         }
         
+        
+    }
+    
+    @objc func filterCommitted() {
+        filter = true
+        reloadAnnotations()
     }
     
     func reloadAnnotations() {
@@ -224,11 +256,40 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, MKMapView
         
         let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
         annotationView.canShowCallout = true
+        
+        
+        
         annotationView.image = UIImage(named: "29")
         
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 500))
         
         if let annotation = annotation as? EventAnnotation {
+            
+            switch annotation.type { // Here is the order of the types ["Misc", "Basketball", "Soccer", "Frisbee", "Studying", "Gym", "Party", "Skating", "Snowboarding / Skiing", "Video Games"]
+            case 0:
+                annotationView.image = UIImage(named: "29")
+            case 1:
+                annotationView.image = UIImage(named: "29")
+            case 2:
+                annotationView.image = UIImage(named: "29")
+            case 3:
+                annotationView.image = UIImage(named: "29")
+            case 4:
+                annotationView.image = UIImage(named: "29")
+            case 5:
+                annotationView.image = UIImage(named: "29")
+            case 6:
+                annotationView.image = UIImage(named: "29")
+            case 7:
+                annotationView.image = UIImage(named: "29")
+            case 8:
+                annotationView.image = UIImage(named: "29")
+            case 9:
+                annotationView.image = UIImage(named: "29")
+                
+            default: //Use misc here
+                annotationView.image = UIImage(named: "29")
+            }
             
             var descHeight = 0
             
