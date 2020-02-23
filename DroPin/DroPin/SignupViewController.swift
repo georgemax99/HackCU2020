@@ -15,6 +15,7 @@ class SignupViewController: UIViewController {
     var submitButton : UIButton!
     var errorLabel : UILabel!
     var backButton : UIButton!
+    var loginbut : UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,33 +25,81 @@ class SignupViewController: UIViewController {
 
     func initUI() {
         
+        var bgColor : UIImageView
+        bgColor = UIImageView(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height));
+        bgColor.image = UIImage(named:"bgcolor")
+        bgColor.center.x = self.view.center.x
+        self.view.addSubview(bgColor)
+        
         errorLabel = UILabel(frame: CGRect(x: 100, y: 50, width: 200, height: 50))
         errorLabel.text = "put error here"
         errorLabel.isHidden = true
         errorLabel.textColor = .red
         self.view.addSubview(errorLabel)
         
-        nameField = UITextField(frame: CGRect(x: 100, y: 100, width: 200, height: 100))
-        nameField.placeholder = "name"
-        nameField.textColor = .black
+        var textfield : UIImageView
+        textfield = UIImageView(frame:CGRect(x: 100, y: UIScreen.main.bounds.height * 0.65 - 95, width: 240, height: 60));
+        textfield.image = UIImage(named:"Text box")
+        textfield.center.x = self.view.center.x
+        self.view.addSubview(textfield)
+        
+        var txtfield : UIImageView
+        txtfield = UIImageView(frame:CGRect(x: 100, y: UIScreen.main.bounds.height * 0.65 - 180, width: 240, height: 60));
+        txtfield.image = UIImage(named:"Text box")
+        txtfield.center.x = self.view.center.x
+        self.view.addSubview(txtfield)
+        
+        nameField = UITextField(frame: CGRect(x: 100, y: UIScreen.main.bounds.height * 0.65 - 180, width: 200, height: 60))
+        nameField.attributedPlaceholder = NSAttributedString(string: "Enter Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        nameField.textColor = .white
+        nameField.center.x = self.view.center.x + 45
         self.view.addSubview(nameField)
         
-        phoneNumberField = UITextField(frame: CGRect(x: 100, y: 300, width: 200, height: 100))
-        phoneNumberField.placeholder = "Phone number"
-        phoneNumberField.textColor = .black
+        phoneNumberField = UITextField(frame: CGRect(x: 100, y: UIScreen.main.bounds.height * 0.65 - 95, width: 200, height: 60))
+        phoneNumberField.attributedPlaceholder = NSAttributedString(string: "Enter Phone #", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        phoneNumberField.textColor = .white
+        phoneNumberField.center.x = self.view.center.x + 40
         self.view.addSubview(phoneNumberField)
         
-        submitButton = UIButton(frame: CGRect(x: 100, y: 500, width: 200, height: 100))
+        var icon : UIImageView
+        icon = UIImageView(frame:CGRect(x: 0, y: UIScreen.main.bounds.height * 0.65 - 435, width: 175, height: 180));
+        icon.image = UIImage(named:"plogo")
+        icon.center.x = self.view.center.x
+        self.view.addSubview(icon)
+        
+        var sup: UIImageView
+        sup = UIImageView(frame:CGRect(x: 0, y: UIScreen.main.bounds.height * 0.65 - 250, width: 150, height: 45));
+        sup.image = UIImage(named:"Register")
+        sup.center.x = self.view.center.x
+        self.view.addSubview(sup)
+        
+        submitButton = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height * 0.65 - 20, width: 200, height: 90))
         submitButton.setTitle("submit", for: .normal)
         submitButton.setTitleColor(.black, for: .normal)
+        submitButton.setImage(UIImage(named: "submitbutton"), for: .normal)
+        submitButton.center.x = self.view.center.x
         submitButton.addTarget(self, action: #selector(submitAction), for: .touchUpInside)
         self.view.addSubview(submitButton)
         
-        backButton = UIButton(frame: CGRect(x: -25, y: 0, width: 200, height: 100))
-        backButton.setTitle("<", for: .normal)
-        backButton.setTitleColor(.black, for: .normal)
+        backButton = UIButton(frame: CGRect(x: -50, y: UIScreen.main.bounds.height * 0.08, width: 50, height: 50))
+        backButton.setTitle("backarrow", for: .normal)
+        backButton.setImage(UIImage(named: "arrow"), for: .normal)
+        backButton.center.x = self.view.center.x - 140
         backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
         self.view.addSubview(backButton)
+        
+        var already : UIImageView
+        already = UIImageView(frame:CGRect(x: 0, y: UIScreen.main.bounds.height * 0.65 + 140, width: 160, height: 25));
+        already.image = UIImage(named:"Already registered")
+        already.center.x = self.view.center.x
+        self.view.addSubview(already)
+        
+        loginbut = UIButton(frame: CGRect(x: -50, y: UIScreen.main.bounds.height * 0.65 + 170, width: 50, height: 20))
+        loginbut.setTitle("regButton", for: .normal)
+        loginbut.setImage(UIImage(named: "Small sign in"), for: .normal)
+        loginbut.center.x = self.view.center.x
+        loginbut.addTarget(self, action: #selector(logAction), for: .touchUpInside)
+        self.view.addSubview(loginbut)
         
         self.view.backgroundColor = .white
     }
@@ -86,6 +135,12 @@ class SignupViewController: UIViewController {
     
     @objc func backAction(){
         let vc = ViewController()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: false, completion: nil)
+    }
+    
+    @objc func logAction(){
+        let vc = LoginViewController()
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: false, completion: nil)
     }

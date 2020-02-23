@@ -40,6 +40,7 @@ class VerifyViewController : UIViewController {
         submitButton = UIButton(frame: CGRect(x: 100, y: 200, width: 200, height: 100))
         submitButton.setTitle("login", for: .normal)
         submitButton.setTitleColor(.black, for: .normal)
+        submitButton.setImage(UIImage(named: "submitbutton"), for: .normal)
         submitButton.addTarget(self, action: #selector(submitAction), for: .touchUpInside)
         self.view.addSubview(submitButton)
         
