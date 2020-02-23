@@ -30,7 +30,9 @@ class MapViewController : UIViewController {
     }
     
     @objc func addLocationAction() {
-        
+        let vc = AddEventViewController()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: false, completion: nil)
     }
     
 }
