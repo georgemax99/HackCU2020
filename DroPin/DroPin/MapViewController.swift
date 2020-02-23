@@ -16,6 +16,9 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, MKMapView
     var mapView : MKMapView!
     var locationManager = CLLocationManager()
     var pressedID : Int64 = -1
+    var HomeButton : UIButton!
+    var PindButton : UIButton!
+    var ProfButton : UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,17 +36,57 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, MKMapView
     }
     
     func initUI() {
-        addLocationButton = UIButton(frame: CGRect(x: 100, y: 0, width: 200, height: 100))
-        addLocationButton.setTitle("add location", for: .normal)
-        addLocationButton.setTitleColor(.black, for: .normal)
-        addLocationButton.addTarget(self, action: #selector(addLocationAction), for: .touchUpInside)
-        self.view.addSubview(addLocationButton)
-        
-        mapView = MKMapView(frame: CGRect(x: 0, y: 150, width: UIScreen.main.bounds.width, height: 500))
+        mapView = MKMapView(frame: CGRect(x: 0, y: UIScreen.main.bounds.height * 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.95))
         mapView.delegate = self
         self.view.addSubview(mapView)
         
-        self.view.backgroundColor = .white
+        var navb : UIImageView
+        navb = UIImageView(frame:CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.15, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.15));
+        navb.image = UIImage(named:"Bar")
+        navb.center.x = self.view.center.x
+        self.view.addSubview(navb)
+               
+        self.view.backgroundColor = .black
+        
+        var smlogo : UIImageView
+        smlogo = UIImageView(frame:CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.15, width: UIScreen.main.bounds.height * 0.1, height: UIScreen.main.bounds.height * 0.1));
+        smlogo.image = UIImage(named:"Bar Logo")
+        smlogo.center.x = self.view.center.x
+        self.view.addSubview(smlogo)
+        
+        addLocationButton = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.08, width: UIScreen.main.bounds.height * 0.05, height: UIScreen.main.bounds.height * 0.05))
+        addLocationButton.setTitle("add location", for: .normal)
+        addLocationButton.setTitleColor(.black, for: .normal)
+        addLocationButton.setImage(UIImage(named: "Add_Pins"), for: .normal)
+        addLocationButton.center.x = self.view.center.x - UIScreen.main.bounds.width * 0.19
+        addLocationButton.addTarget(self, action: #selector(addLocationAction), for: .touchUpInside)
+        self.view.addSubview(addLocationButton)
+        
+        ProfButton = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.079, width: UIScreen.main.bounds.height * 0.04, height: UIScreen.main.bounds.height * 0.05))
+        ProfButton.setTitle("Profile", for: .normal)
+        ProfButton.setTitleColor(.black, for: .normal)
+        ProfButton.setImage(UIImage(named: "Me"), for: .normal)
+        ProfButton.center.x = self.view.center.x + UIScreen.main.bounds.width * 0.38
+        ProfButton.addTarget(self, action: #selector(addLocationAction), for: .touchUpInside)
+        self.view.addSubview(ProfButton)
+        
+        PindButton = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.08, width: UIScreen.main.bounds.height * 0.05, height: UIScreen.main.bounds.height * 0.05))
+        PindButton.setTitle("MyPind", for: .normal)
+        PindButton.setTitleColor(.black, for: .normal)
+        PindButton.setImage(UIImage(named: "My Pin'd"), for: .normal)
+        PindButton.center.x = self.view.center.x + UIScreen.main.bounds.width * 0.19
+        PindButton.addTarget(self, action: #selector(addLocationAction), for: .touchUpInside)
+        self.view.addSubview(PindButton)
+        
+        HomeButton = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.09, width: UIScreen.main.bounds.height * 0.1, height: UIScreen.main.bounds.height * 0.06))
+        HomeButton.setTitle("Home", for: .normal)
+        HomeButton.setTitleColor(.black, for: .normal)
+        HomeButton.setImage(UIImage(named: "Home"), for: .normal)
+        HomeButton.center.x = self.view.center.x - UIScreen.main.bounds.width * 0.38
+        HomeButton.addTarget(self, action: #selector(HomeAction), for: .touchUpInside)
+        self.view.addSubview(HomeButton)
+        
+       
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -301,6 +344,12 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, MKMapView
     
     @objc func addLocationAction() {
         let vc = AddEventViewController()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: false, completion: nil)
+    }
+    
+    @objc func HomeAction() {
+        let vc = MapViewController()
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: false, completion: nil)
     }
