@@ -50,10 +50,9 @@ public class EventSql {
 			stmt.setString(1, city);
 			stmt.setString(2, state);
 			rs = stmt.executeQuery();
-			if (rs.next()) {
-				BeanProcessor bp = new BeanProcessor();
-				events = bp.toBeanList(rs, Event.class);
-			}
+			BeanProcessor bp = new BeanProcessor();
+			events = bp.toBeanList(rs, Event.class);
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("Database failed to query.");

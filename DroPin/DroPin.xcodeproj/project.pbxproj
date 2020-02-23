@@ -22,6 +22,7 @@
 		52EC23F32401F04B001D861C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC23F22401F04B001D861C /* MapViewController.swift */; };
 		52EC23F52401FC21001D861C /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC23F42401FC21001D861C /* AddEventViewController.swift */; };
 		52EC23F7240210A5001D861C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC23F6240210A5001D861C /* User.swift */; };
+		52EC23F92402212C001D861C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC23F82402212C001D861C /* Event.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		52EC23F22401F04B001D861C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		52EC23F42401FC21001D861C /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		52EC23F6240210A5001D861C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		52EC23F82402212C001D861C /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				52EC23F22401F04B001D861C /* MapViewController.swift */,
 				52EC23F42401FC21001D861C /* AddEventViewController.swift */,
 				52EC23F6240210A5001D861C /* User.swift */,
+				52EC23F82402212C001D861C /* Event.swift */,
 			);
 			path = DroPin;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52EC23EB2401DD1A001D861C /* LoginViewController.swift in Sources */,
+				52EC23F92402212C001D861C /* Event.swift in Sources */,
 				52EC23BE2401B97B001D861C /* ViewController.swift in Sources */,
 				52EC23ED2401E098001D861C /* SignupViewController.swift in Sources */,
 				52EC23EF2401E8CF001D861C /* VerifyViewController.swift in Sources */,

@@ -17,7 +17,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
         initUI()
+        
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if let user = UserDefaults.standard.object(forKey: "User") {
+            print("hello")
+            segueToMap()
+        }
     }
     
     func initUI() {
@@ -72,6 +82,13 @@ class ViewController: UIViewController {
     
     @objc func signupAction() {
         let vc = SignupViewController()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: false, completion: nil)
+    }
+    
+    func segueToMap() {
+        print("in map segue")
+        let vc = MapViewController()
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: false, completion: nil)
     }
