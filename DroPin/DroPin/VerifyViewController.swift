@@ -98,12 +98,8 @@ class VerifyViewController : UIViewController {
                         
                     }
                 } else if responseString == "1" {
-<<<<<<< HEAD
                     //phone number already in use
-                    
-=======
                     //code does not match
->>>>>>> master
                 }
                 
                 print("responseString = \(responseString)")
