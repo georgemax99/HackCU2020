@@ -15,6 +15,7 @@ class VerifyViewController : UIViewController {
     var codeField : UITextField!
     var errorLabel : UILabel!
     var verifyButton : UIButton!
+    var backButton : UIButton!
     
     var authorized = true
     
@@ -39,43 +40,50 @@ class VerifyViewController : UIViewController {
         self.view.addSubview(errorLabel)
         
         var codefield : UIImageView
-        codefield = UIImageView(frame:CGRect(x: 100, y: UIScreen.main.bounds.height * 0.55, width: 240, height: 60));
+        codefield = UIImageView(frame:CGRect(x: 100, y: UIScreen.main.bounds.height * 0.5, width: 240, height: 60));
         codefield.image = UIImage(named:"Text box")
-        codefield.center.x = self.view.center.x
+        codefield.center.x = self.view.center.x - UIScreen.main.bounds.width * 0.0175
         self.view.addSubview(codefield)
         
-        let textField = UITextField(frame: CGRect(x: 100, y: UIScreen.main.bounds.height * 0.55, width: 180, height: 60))
+        let textField = UITextField(frame: CGRect(x: 100, y: UIScreen.main.bounds.height * 0.5, width: 180, height: 60))
         textField.attributedPlaceholder = NSAttributedString(string: "Confirmation Code", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         textField.textColor = .white
         textField.center.x = self.view.center.x + UIScreen.main.bounds.width * 0.025
         self.view.addSubview(textField)
         
         var longw : UIImageView
-        longw = UIImageView(frame:CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.475, width: 360, height: 60));
+        longw = UIImageView(frame:CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.6, width: 240, height: 50));
         longw.image = UIImage(named:"longwords")
         longw.center.x = self.view.center.x
         self.view.addSubview(longw)
         
         var almost : UIImageView
-        almost = UIImageView(frame:CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.6, width: 180, height: 90));
+        almost = UIImageView(frame:CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.7, width: 200, height: 50));
         almost.image = UIImage(named:"Almost there")
         almost.center.x = self.view.center.x
         self.view.addSubview(almost)
         
         var icon : UIImageView
-        icon = UIImageView(frame:CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.75, width: 175, height: 180));
+        icon = UIImageView(frame:CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.9, width: 180, height: 190));
         icon.image = UIImage(named:"plogo")
         icon.center.x = self.view.center.x
         self.view.addSubview(icon)
         
         
-        verifyButton = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.3, width: UIScreen.main.bounds.width * 0.5, height: UIScreen.main.bounds.height * 0.1))
+        verifyButton = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.35, width: UIScreen.main.bounds.width * 0.5, height: UIScreen.main.bounds.height * 0.1))
         verifyButton.setTitle("login", for: .normal)
         verifyButton.setTitleColor(.black, for: .normal)
         verifyButton.setImage(UIImage(named: "Verify"), for: .normal)
         verifyButton.center.x = self.view.center.x
         verifyButton.addTarget(self, action: #selector(submitAction), for: .touchUpInside)
         self.view.addSubview(verifyButton)
+        
+        backButton = UIButton(frame: CGRect(x: -50, y: UIScreen.main.bounds.height * 0.08, width: 50, height: 50))
+        backButton.setTitle("backarrow", for: .normal)
+        backButton.setImage(UIImage(named: "arrow"), for: .normal)
+        backButton.center.x = self.view.center.x - 140
+        backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+        self.view.addSubview(backButton)
         
         
         
@@ -96,6 +104,12 @@ class VerifyViewController : UIViewController {
                 //code is empty
             }
         }
+    }
+    
+    @objc func backAction(){
+        let vc = LoginViewController()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: false, completion: nil)
     }
     
     func sendCodePost(url : String, parameters : [String : Any]) {
