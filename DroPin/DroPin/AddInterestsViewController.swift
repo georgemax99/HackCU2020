@@ -43,6 +43,7 @@ class AddInterestsViewController : UIViewController, UITableViewDelegate, UITabl
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.backgroundColor = .black
         self.view.addSubview(tableView)
     }
     
