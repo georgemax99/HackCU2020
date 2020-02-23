@@ -22,6 +22,7 @@ public class AddEventServlet extends HttpServlet {
 		String lat = req.getParameter("lat");
 		int numNeeded = Integer.parseInt(req.getParameter("numNeeded"));
 		Long userId = Long.parseLong(req.getParameter("userId"));
+		String description = req.getParameter("description");
 
 		EventSql eventSql = new EventSql();
 		eventSql.deleteByUserId(userId);
@@ -35,6 +36,8 @@ public class AddEventServlet extends HttpServlet {
 		event.setUserId(userId);
 		event.setNumberCommitted(0);
 		event.setNumberNeeded(numNeeded);
+		event.setDescrip(description);
+		event.setUserCommited(0);
 
 		eventSql.create(event);
 

@@ -2,9 +2,12 @@ sql/EventSql.class
 beans/Event.class
 beans/User.class
 util/SQLUtil.class
+beans/Commit.class
 servlets/VerificationServlet.class
 servlets/SignupServlet.class
+sql/CommitSql.class
 servlets/LoginServlet.class
+servlets/AddCommitServlet.class
 servlets/AddEventServlet.class
 util/TextUtil.class
 servlets/GetEventsServlet.class

@@ -10,10 +10,11 @@ import Foundation
 import UIKit
 import CoreLocation
 
-class AddEventViewController : UIViewController, CLLocationManagerDelegate {
+class AddEventViewController : UIViewController, CLLocationManagerDelegate, UITextViewDelegate {
     
     var eventNameField : UITextField!
     var numNeededField : UITextField!
+    var descriptionField : UITextView!
     var submitButton : UIButton!
     var locationManager = CLLocationManager()
     
@@ -22,6 +23,7 @@ class AddEventViewController : UIViewController, CLLocationManagerDelegate {
         // Do any additional setup after loading the view.
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
         
         
         initUI()
@@ -37,6 +39,11 @@ class AddEventViewController : UIViewController, CLLocationManagerDelegate {
         numNeededField.placeholder = "Number needed"
         numNeededField.textColor = .black
         self.view.addSubview(numNeededField)
+        
+        descriptionField = UITextView(frame: CGRect(x: 100, y: 400, width: 200, height: 200))
+        descriptionField.textColor = .black
+        descriptionField.delegate = self
+        self.view.addSubview(descriptionField)
         
         submitButton = UIButton(frame: CGRect(x: 100, y: 200, width: 200, height: 100))
         submitButton.setTitle("login", for: .normal)
@@ -76,7 +83,7 @@ class AddEventViewController : UIViewController, CLLocationManagerDelegate {
     }
     
     func createEvent(location: CLLocation) {
-        if let eventName = eventNameField.text, let numNeeded = numNeededField.text, let userData = UserDefaults.standard.object(forKey: "User") {
+        if let eventName = eventNameField.text, let numNeeded = numNeededField.text, let userData = UserDefaults.standard.object(forKey: "User"), let desc = descriptionField.text {
             locationManager.stopUpdatingLocation()
             let decoder = JSONDecoder()
             var userId : Int64?
@@ -104,7 +111,8 @@ class AddEventViewController : UIViewController, CLLocationManagerDelegate {
                             "lat" : location.coordinate.latitude,
                             "title" : eventName,
                             "numNeeded" : numNeeded,
-                            "userId" : userId
+                            "userId" : userId,
+                            "description" : desc
                         ]
                         self.sendAddEventPost(url: "http://Dropin-env.b7vjewtmgu.us-east-1.elasticbeanstalk.com/addEvent", parameters: parameters)
                     }
@@ -163,6 +171,12 @@ class AddEventViewController : UIViewController, CLLocationManagerDelegate {
         let vc = MapViewController()
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: false, completion: nil)
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let text = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        let numberOfChars = text.count
+        return numberOfChars < 255
     }
     
     
