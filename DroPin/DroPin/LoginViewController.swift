@@ -57,6 +57,8 @@ class LoginViewController: UIViewController {
                 
             } else {
                 //Phone number is empty
+                errorLabel.text = "Phone # Field is Empty"
+                errorLabel.isHidden = false
             }
             
             
@@ -92,6 +94,8 @@ class LoginViewController: UIViewController {
                     }
                 } else if responseString == "1" {
                     //no account found for that phone number
+                    self.errorLabel.text = "No Account Found for that Phone #"
+                    self.errorLabel.isHidden = false
                 }
                 
                 print("responseString = \(responseString)")
