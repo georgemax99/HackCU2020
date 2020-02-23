@@ -33,14 +33,22 @@ class AccessViewController: UIViewController {
     }
 
     func initUI() {
+        
+        var bgColor : UIImageView
+        bgColor = UIImageView(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height));
+        bgColor.image = UIImage(named:"bgcolor")
+        bgColor.center.x = self.view.center.x
+        self.view.addSubview(bgColor)
+        
         accessLabel = UILabel(frame: CGRect(x: 100, y: 50, width: 200, height: 200))
         accessLabel.text = "Notifications"
         accessLabel.textColor = .black
         self.view.addSubview(accessLabel)
         
-        submitButton = UIButton(frame: CGRect(x: 100, y: 200, width: 200, height: 100))
+        submitButton = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height * 0.35, width: UIScreen.main.bounds.width * 0.5, height: UIScreen.main.bounds.height * 0.1))
         submitButton.setTitle("Submit", for: .normal)
         submitButton.setTitleColor(.black, for: .normal)
+        submitButton.setImage(UIImage(named: "submitButton"), for: .normal)
         submitButton.addTarget(self, action: #selector(submitAction), for: .touchUpInside)
         self.view.addSubview(submitButton)
         

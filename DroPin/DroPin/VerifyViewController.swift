@@ -12,7 +12,7 @@ import CoreLocation
 
 class VerifyViewController : UIViewController {
     
-    var codeField : UITextField!
+    var textField : UITextField!
     var errorLabel : UILabel!
     var verifyButton : UIButton!
     var backButton : UIButton!
@@ -39,13 +39,13 @@ class VerifyViewController : UIViewController {
         errorLabel.textColor = .red
         self.view.addSubview(errorLabel)
         
-        var codefield : UIImageView
-        codefield = UIImageView(frame:CGRect(x: 100, y: UIScreen.main.bounds.height * 0.5, width: 240, height: 60));
-        codefield.image = UIImage(named:"Text box")
-        codefield.center.x = self.view.center.x - UIScreen.main.bounds.width * 0.0175
-        self.view.addSubview(codefield)
+        let codeField: UIImageView
+        codeField = UIImageView(frame:CGRect(x: 100, y: UIScreen.main.bounds.height * 0.5, width: 240, height: 60));
+        codeField.image = UIImage(named:"Text box")
+        codeField.center.x = self.view.center.x - UIScreen.main.bounds.width * 0.0175
+        self.view.addSubview(codeField)
         
-        let textField = UITextField(frame: CGRect(x: 100, y: UIScreen.main.bounds.height * 0.5, width: 180, height: 60))
+        textField = UITextField(frame: CGRect(x: 100, y: UIScreen.main.bounds.height * 0.5, width: 180, height: 60))
         textField.attributedPlaceholder = NSAttributedString(string: "Confirmation Code", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         textField.textColor = .white
         textField.center.x = self.view.center.x + UIScreen.main.bounds.width * 0.025
@@ -92,7 +92,7 @@ class VerifyViewController : UIViewController {
     }
     
     @objc func submitAction() {
-        if let code = codeField.text, let phoneNumber = UserDefaults.standard.string(forKey: "phoneNumber") {
+        if let code = textField.text, let phoneNumber = UserDefaults.standard.string(forKey: "phoneNumber") {
             if code != "" {
                 let parameters : [String : Any] = [
                    "phoneNumber" : phoneNumber,
