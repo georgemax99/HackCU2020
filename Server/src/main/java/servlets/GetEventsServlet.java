@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @WebServlet("/getEvents")
@@ -33,6 +35,23 @@ public class GetEventsServlet extends HttpServlet {
 
 			CommitSql commitSql = new CommitSql();
 
+			Date now = new Date();
+			int size = events.size();
+
+			Calendar cal = Calendar.getInstance();
+
+
+			for (int i = 0; i < size; i++) {
+				cal.setTime(events.get(i).getNow());
+				cal.add(Calendar.HOUR_OF_DAY, 24);
+				if (now.compareTo(cal.getTime()) > 0) {
+
+					eventSql.deleteByUserId(events.get(i).getUserId());
+					events.remove(i);
+					size--;
+				}
+			}
+
 			for (int i = 0; i < events.size(); i++) {
 				Commit commit = new Commit();
 				commit.setUserId(userId);
@@ -41,6 +60,8 @@ public class GetEventsServlet extends HttpServlet {
 					events.get(i).setUserCommited(1);
 				}
 			}
+
+
 			printWriter.print(gson.toJson(events));
 		} else {
 			printWriter.print(1);

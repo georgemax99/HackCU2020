@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 
 @WebServlet("/addEvent")
 public class AddEventServlet extends HttpServlet {
@@ -23,6 +24,7 @@ public class AddEventServlet extends HttpServlet {
 		int numNeeded = Integer.parseInt(req.getParameter("numNeeded"));
 		Long userId = Long.parseLong(req.getParameter("userId"));
 		String description = req.getParameter("description");
+		String time = req.getParameter("time");
 
 		EventSql eventSql = new EventSql();
 		eventSql.deleteByUserId(userId);
@@ -38,6 +40,8 @@ public class AddEventServlet extends HttpServlet {
 		event.setNumberNeeded(numNeeded);
 		event.setDescrip(description);
 		event.setUserCommited(0);
+		event.setTime(time);
+		event.setNow(new Date());
 
 		eventSql.create(event);
 

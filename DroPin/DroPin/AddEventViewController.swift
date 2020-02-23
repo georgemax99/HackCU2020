@@ -15,6 +15,7 @@ class AddEventViewController : UIViewController, CLLocationManagerDelegate, UITe
     var eventNameField : UITextField!
     var numNeededField : UITextField!
     var descriptionField : UITextView!
+    var timePicker : UIDatePicker!
     var submitButton : UIButton!
     var locationManager = CLLocationManager()
     
@@ -44,6 +45,10 @@ class AddEventViewController : UIViewController, CLLocationManagerDelegate, UITe
         descriptionField.textColor = .black
         descriptionField.delegate = self
         self.view.addSubview(descriptionField)
+        
+        timePicker = UIDatePicker(frame: CGRect(x: 100, y: 600, width: 200, height: 100))
+        timePicker.datePickerMode = .time
+        self.view.addSubview(timePicker)
         
         submitButton = UIButton(frame: CGRect(x: 100, y: 200, width: 200, height: 100))
         submitButton.setTitle("login", for: .normal)
@@ -85,6 +90,11 @@ class AddEventViewController : UIViewController, CLLocationManagerDelegate, UITe
     func createEvent(location: CLLocation) {
         if let eventName = eventNameField.text, let numNeeded = numNeededField.text, let userData = UserDefaults.standard.object(forKey: "User"), let desc = descriptionField.text {
             locationManager.stopUpdatingLocation()
+            
+            let timeFormatter = DateFormatter()
+            timeFormatter.dateFormat = "HH:mm"
+            let time = timeFormatter.string(from: timePicker.date)
+            
             let decoder = JSONDecoder()
             var userId : Int64?
             do {
@@ -112,7 +122,8 @@ class AddEventViewController : UIViewController, CLLocationManagerDelegate, UITe
                             "title" : eventName,
                             "numNeeded" : numNeeded,
                             "userId" : userId,
-                            "description" : desc
+                            "description" : desc,
+                            "time" : time
                         ]
                         self.sendAddEventPost(url: "http://Dropin-env.b7vjewtmgu.us-east-1.elasticbeanstalk.com/addEvent", parameters: parameters)
                     }

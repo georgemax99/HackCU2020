@@ -19,8 +19,9 @@ class EventAnnotation : NSObject, MKAnnotation {
     let coordinate : CLLocationCoordinate2D
     let title : String?
     let userCommitted : Int?
+    let time : String?
     
-    init(id : Int64, type : Int, committed : Int, desc : String, coordinate : CLLocationCoordinate2D, title : String, userCommitted : Int) {
+    init(id : Int64, type : Int, committed : Int, desc : String, coordinate : CLLocationCoordinate2D, title : String, userCommitted : Int, time : String) {
         self.id = id
         self.type = type
         self.committed = committed
@@ -28,6 +29,7 @@ class EventAnnotation : NSObject, MKAnnotation {
         self.title = title
         self.coordinate = coordinate
         self.userCommitted = userCommitted
+        self.time = time
         
         super.init()
     }
