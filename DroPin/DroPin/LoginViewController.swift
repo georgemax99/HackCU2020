@@ -36,13 +36,14 @@ class LoginViewController: UIViewController {
         phoneNumberField.textColor = .black
         self.view.addSubview(phoneNumberField)
         
-        submitButton = UIButton(frame: CGRect(x: 100, y: 200, width: 200, height: 100))
+        submitButton = UIButton(frame: CGRect(x: 100, y: 600, width: 200, height: 100))
         submitButton.setTitle("login", for: .normal)
         submitButton.setTitleColor(.black, for: .normal)
+        submitButton.setImage(UIImage(named: "submitbutton"), for: .normal)
         submitButton.addTarget(self, action: #selector(submitAction), for: .touchUpInside)
         self.view.addSubview(submitButton)
         
-        backButton = UIButton(frame: CGRect(x: -25, y: 0, width: 200, height: 100))
+        backButton = UIButton(frame: CGRect(x: -50, y: 20, width: 200, height: 100))
         backButton.setTitle("<", for: .normal)
         backButton.setTitleColor(.black, for: .normal)
         backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
@@ -53,8 +54,6 @@ class LoginViewController: UIViewController {
     
     @objc func submitAction() {
         if let phoneNumber = phoneNumberField.text {
-                    
-                    
             if phoneNumber != "" {
                 let parameters : [String : Any] = [
                     "phoneNumber" : phoneNumber
@@ -67,8 +66,6 @@ class LoginViewController: UIViewController {
                 errorLabel.text = "Phone # Field is Empty"
                 errorLabel.isHidden = false
             }
-            
-            
         }
     }
     

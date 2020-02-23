@@ -20,19 +20,20 @@ class ViewController: UIViewController {
     }
     
     func initUI() {
-        loginButton = UIButton(frame: CGRect(x: 100, y: 100, width: 200, height: 100))
-        loginButton.setTitle("login", for: .normal)
+        loginButton = UIButton(frame: CGRect(x: 100, y: 1700, width: 200, height: 100))
+        loginButton.setTitle("Sign In", for: .normal)
         loginButton.setTitleColor(.black, for: .normal)
+        loginButton.setImage(UIImage(named: "Sign_inButton"), for: .normal)
         loginButton.addTarget(self, action: #selector(loginAction), for: .touchUpInside)
         self.view.addSubview(loginButton)
         
-        signupButton = UIButton(frame: CGRect(x: 100, y: 300, width: 200, height: 100))
-        signupButton.setTitle("sign up", for: .normal)
+        signupButton = UIButton(frame: CGRect(x: 100, y: 600, width: 200, height: 100))
+        signupButton.setTitle("Register", for: .normal)
         signupButton.setTitleColor(.black, for: .normal)
+        signupButton.setImage(UIImage(named: "RegisterButton"), for: .normal)
         signupButton.addTarget(self, action: #selector(signupAction), for: .touchUpInside)
         self.view.addSubview(signupButton)
         
-        self.view.backgroundColor = .white
     }
     
     @objc func loginAction() {
